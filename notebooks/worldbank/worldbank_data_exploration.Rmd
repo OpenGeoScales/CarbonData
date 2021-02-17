@@ -1,0 +1,25 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+In thius notebook wi will explore ghg emissions data published from world bank. 
+
+# Get data
+
+Let's identify datasets related to ghg emissions
+
+```{r}
+library(WDI)
+new_wdi_cache <- WDIcache() 
+datasets = WDIsearch("*emissions.", cache = new_wdi_cache)
+print(head(datasets))
+```
+
+# Totla GHG emissions
+
+```{r}
+data = WDI(indicator=c("wb_total_ghg_emissions" = "EN.ATM.GHGT.KT.CE"))
+
+print(head(datasets))
+```
