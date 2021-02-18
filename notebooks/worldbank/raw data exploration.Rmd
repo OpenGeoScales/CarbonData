@@ -2,14 +2,19 @@
 title: "World Bank data exploration"
 author: "Saif Shabou"
 date: "17/02/2021"
+# output:
+#   github_document:
+#     # keep_md: true
+#     toc: true
+#     toc_depth: 2
+#     fig_width: 5
+#     fig_height: 5
 output:
-  html_document
-  # github_document:
-  #   toc: true
-  #   toc_depth: 2
-  #   fig_width: 5
-  #   fig_height: 5
-    
+  md_document:
+    variant: markdown_github
+    toc: true
+    toc_depth: 2
+always_allow_html: true
 ---
 
 
