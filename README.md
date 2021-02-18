@@ -1,26 +1,61 @@
-# CarbonData 2
+# CarbonData 
 
 # What is CarbonData for?
 
-- Identifying and documenting GHG elmissions data sources
-- Collect and share raw data (in github repo if data is less than 100MB otherwise kaggle datasets)
+##  Main goal
+
+We are here to provide clean, verified, cross-checked and normalized datasets on GHG emissions.
+
+## Features
+
+- Identify and document GHG elmissions data sources
+- Collect and share raw data 
 - Analyse raw data and provide insights
 - Compare vairous sources
-- Combine data sources
+- Combine and clean data sources
+- Model and maintain an aggregated data base
 - Develop API to query normalized data source
 - Develpop dashs to explore it
 
 # How can I contribute?
 
-- A data detective: 
-    - I found a new data source that is not referenced
-- 
+There are vaious ways to contribute to this project depending on your skills and motivation.
 
-## Sharing Data on GHG emissions
+## Domain knowledge
 
-There are multiple data sources on GHG emissions. This data is provided in various platforms, formats, frequencies, scales...
+Data are information collected by observation or measurements to capture and understand some phenomenon. Before exploring open GHG emissions data, we need to:
+- Understand the phenomenon behind it: carbon cycle, greenhouse gazes, carbon budget, carbon sinks...
+- Know how data is collected:  carbon inventories...
+- Know why data is collected: carbon budget, carbon pricing...
 
-Our goal here is 
+This knowledge may be shared in the [wiki page](https://github.com/OpenGeoScales/CarbonData/wiki)
+
+
+## Data sources cartography
+
+- Identifying and referening new data srouces: 
+
+You can find is [this page](https://github.com/OpenGeoScales/CarbonData/wiki/Data-sources) a list of identified GHG emissisons data soruces. If you identify a new data source, please add it in the list by specifying some metadata (provider, spatial coverage, format...). If you think that data sources content need to be investigated, please add an issue in the project backlog.
+
+## Data source collection and sharing
+
+There are several ways to collecte the data. Since we do not have data storage infrastructure, it would be prefereable to use data provided b
+
+- API acesss: If data source can be queried by using an existing API, please document data collection method in the associated readme file. 
+- http acccess: If data is stored for example in a git repo, please mention the http address used for collecting it.
+- Bulk download: If data source is only accessible for download, wa can use kaggle datasets to store and document the raw data. Please, provide sample script fro accessing the data through Kaggle API.
+
+## Raw data exploration 
+
+## Data normalization
+
+## Normalized Data exposure
+
+- API: Develop API for querying the normalized data
+- Viz: Develop dashboards for exploring contents.
+
+
+# Collaboration process
 
 # Structure
 
