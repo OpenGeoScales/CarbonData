@@ -1,31 +1,61 @@
 ---
 title: "World Bank data exploration"
-author: "Saif Shabopu"
+author: "Saif Shabou"
 date: "17/02/2021"
-output: github_document
+output:
+  html_document
+  # github_document:
+  #   toc: true
+  #   toc_depth: 2
+  #   fig_width: 5
+  #   fig_height: 5
+    
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+In this notebook wi will explore ghg emissions data published from world bank. 
 
-```{r cars}
-summary(cars)
+# Get data
+
+Let's identify datasets related to ghg emissions
+
+```{r}
+library(WDI)
+new_wdi_cache <- WDIcache() 
+datasets = WDIsearch("*emissions.", cache = new_wdi_cache)
+print(head(datasets))
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+# Total GHG emissions
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+data = WDI(indicator=c("wb_total_ghg_emissions" = "EN.ATM.GHGT.KT.CE"))
+
+print(head(datasets))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Plot
 
+```{r}
+
+library(dplyr)
+emission_FR <- data %>% filter(iso2c == "FR")
+emission_USA <- data %>% filter(iso2c == "US")
+
+library(plotly)
+
+fig <- plot_ly(emission_FR, x = ~year, y = ~wb_total_ghg_emissions, 
+               type = 'scatter', mode = 'lines')
+
+fig
+```
+
+# References
+- rendering [github_document](https://rmarkdown.rstudio.com/github_document_format.html)

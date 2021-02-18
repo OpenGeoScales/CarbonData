@@ -1,35 +1,65 @@
 World Bank data exploration
 ================
-Saif Shabopu
+Saif Shabou
 17/02/2021
 
-## R Markdown
+-   [Get data](#get-data)
+-   [Total GHG emissions](#total-ghg-emissions)
+-   [References](#references)
 
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
+In this notebook wi will explore ghg emissions data published from world
+bank.
 
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+# Get data
+
+Let’s identify datasets related to ghg emissions
 
 ``` r
-summary(cars)
+library(WDI)
+new_wdi_cache <- WDIcache() 
+datasets = WDIsearch("*emissions.", cache = new_wdi_cache)
+print(head(datasets))
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+    ##      indicator       
+    ## [1,] "EE.BOD.CGLS.ZS"
+    ## [2,] "EE.BOD.CHEM.ZS"
+    ## [3,] "EE.BOD.FOOD.ZS"
+    ## [4,] "EE.BOD.MTAL.ZS"
+    ## [5,] "EE.BOD.OTHR.ZS"
+    ## [6,] "EE.BOD.PAPR.ZS"
+    ##      name                                                                 
+    ## [1,] "Water pollution, clay and glass industry (% of total BOD emissions)"
+    ## [2,] "Water pollution, chemical industry (% of total BOD emissions)"      
+    ## [3,] "Water pollution, food industry (% of total BOD emissions)"          
+    ## [4,] "Water pollution, metal industry (% of total BOD emissions)"         
+    ## [5,] "Water pollution, other industry (% of total BOD emissions)"         
+    ## [6,] "Water pollution, paper and pulp industry (% of total BOD emissions)"
 
-## Including Plots
+# Total GHG emissions
 
-You can also embed plots, for example:
+``` r
+data = WDI(indicator=c("wb_total_ghg_emissions" = "EN.ATM.GHGT.KT.CE"))
 
-![](raw-data-exploration_files/figure-gfm/pressure-1.png)<!-- -->
+print(head(datasets))
+```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+    ##      indicator       
+    ## [1,] "EE.BOD.CGLS.ZS"
+    ## [2,] "EE.BOD.CHEM.ZS"
+    ## [3,] "EE.BOD.FOOD.ZS"
+    ## [4,] "EE.BOD.MTAL.ZS"
+    ## [5,] "EE.BOD.OTHR.ZS"
+    ## [6,] "EE.BOD.PAPR.ZS"
+    ##      name                                                                 
+    ## [1,] "Water pollution, clay and glass industry (% of total BOD emissions)"
+    ## [2,] "Water pollution, chemical industry (% of total BOD emissions)"      
+    ## [3,] "Water pollution, food industry (% of total BOD emissions)"          
+    ## [4,] "Water pollution, metal industry (% of total BOD emissions)"         
+    ## [5,] "Water pollution, other industry (% of total BOD emissions)"         
+    ## [6,] "Water pollution, paper and pulp industry (% of total BOD emissions)"
+
+# References
+
+-   rendering
+    [github\_document](https://rmarkdown.rstudio.com/github_document_format.html)
