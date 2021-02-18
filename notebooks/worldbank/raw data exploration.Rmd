@@ -2,19 +2,14 @@
 title: "World Bank data exploration"
 author: "Saif Shabou"
 date: "17/02/2021"
-# output:
-#   github_document:
-#     # keep_md: true
-#     toc: true
-#     toc_depth: 2
-#     fig_width: 5
-#     fig_height: 5
 output:
-  md_document:
-    variant: markdown_github
+  github_document:
     toc: true
     toc_depth: 2
-always_allow_html: true
+    fig_width: 5
+    fig_height: 5
+# output:
+#   html_document
 ---
 
 
@@ -28,11 +23,12 @@ In this notebook wi will explore ghg emissions data published from world bank.
 
 # Get data
 
+
 Let's identify datasets related to ghg emissions
 
 ```{r}
 library(WDI)
-new_wdi_cache <- WDIcache() 
+new_wdi_cache <- WDIcache()
 datasets = WDIsearch("*emissions.", cache = new_wdi_cache)
 print(head(datasets))
 ```
@@ -54,12 +50,22 @@ library(dplyr)
 emission_FR <- data %>% filter(iso2c == "FR")
 emission_USA <- data %>% filter(iso2c == "US")
 
-library(plotly)
+# non interactive plot
+library(ggplot2)
+ggplot(emission_FR, 
+       aes(year, wb_total_ghg_emissions, color=country)) + 
+  geom_line() + 
+  xlab('Year') + 
+  ylab('GDP per capita')
 
-fig <- plot_ly(emission_FR, x = ~year, y = ~wb_total_ghg_emissions, 
-               type = 'scatter', mode = 'lines')
+# interactive plot
 
-fig
+# library(plotly)
+# 
+# fig <- plot_ly(emission_FR, x = ~year, y = ~wb_total_ghg_emissions,
+#                type = 'scatter', mode = 'lines')
+# 
+# fig
 ```
 
 # References
