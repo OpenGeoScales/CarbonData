@@ -4,18 +4,28 @@
 
 ##  Main goal
 
-We are here to provide clean, verified, cross-checked and normalized datasets on GHG emissions.
+> Our main goal is to provide clean, verified, cross-checked and normalized datasets on GHG emissions.
 
 ## Features
 
-- Identify and document GHG elmissions data sources
-- Collect and share raw data 
-- Analyse raw data and provide insights
-- Compare vairous sources
-- Combine and clean data sources
-- Model and maintain an aggregated data base
-- Develop API to query normalized data source
-- Develpop dashs to explore it
+- **Domain knowledge**
+    - Build a knowledge base on GHG emissions concepts, phenomenon, methods...
+    - Share and explain main concepts to non-specialist
+
+- **Data cartography**
+    - Identify and document GHG emissions data sources
+
+- **Data exploration reports**
+    - Analyse raw data and provide insights
+    - Compare various sources
+
+- **Normalized GHG emissions database**
+    - Combine and clean data sources
+    - Model and maintain an aggregated data base
+
+- **Normalized GHG emissions data sharing**
+    -  Develop API to query normalized data source
+    - Develpop dashs to explore it
 
 # How can I contribute?
 
