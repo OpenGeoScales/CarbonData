@@ -9,11 +9,19 @@
 ## Features
 
 - **Domain knowledge**
-    - Build a knowledge base on GHG emissions concepts, phenomenon, methods...
-    - Share and explain main concepts to non-specialist
+    - Tasks:
+        -  Build a knowledge base on GHG emissions concepts, phenomenon, methods...
+        - Share and explain main concepts to non-specialist
+    - Outputs:
+       - A report for synthesizing concepts related to GHG emissions data
+       - A wiki for defning the main used concepts 
 
 - **Data cartography**
-    - Identify and document GHG emissions data sources
+    - Tasks:
+        - Identify and document GHG emissions data sources
+    - Outputs:
+        - A cartography of relevant data sources on GHG emissions with documentation
+        - A datacatalog for 
 
 - **Data exploration reports**
     - Analyse raw data and provide insights
