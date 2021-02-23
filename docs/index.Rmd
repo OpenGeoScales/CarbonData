@@ -15,6 +15,9 @@ output:
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 library(dplyr)
 library(tidyverse)
+library(knitr)
+library(plotly)
+library(kableExtra)
 
 ```
 
@@ -41,8 +44,26 @@ ghg_emissions_wb = WDI(indicator='EN.ATM.GHGT.KT.CE')
 ghg_emissions_wb_world = ghg_emissions_wb %>% 
   filter(country == "World")
 
-# print table
-print(head(ghg_emissions_wb_world))
+# Show data sample 
+ghg_emissions_wb_world %>% 
+  top_n(10) %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F, font_size = 13) %>% 
+  scroll_box(width = "100%", height = "400px")
+
+# plot world GHG emissions
+ghg_emissions_wb_world %>% 
+  plot_ly() %>% 
+  add_trace(y = ~EN.ATM.GHGT.KT.CE, 
+            x = ~year, 
+            marker = list(color = "gray"),
+            type = 'scatter',
+            # type = "line",
+            mode = 'lines+markers',
+            orientation = "v") %>% 
+  layout(title = "World GHG emissions (source: WorldBank)",
+         yaxis = list(title = "GHG emissions"), 
+         xaxis = list(title = "Years"))
 
 ``` 
 
