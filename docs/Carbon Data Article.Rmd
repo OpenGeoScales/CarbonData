@@ -1,0 +1,49 @@
+---
+title: "Carbon Data Analysis"
+author: "Saif Shabou"
+date: "25/11/2020"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    theme: spacelab
+    highlight: tango
+    number_sections: yes
+    code_folding: hide
+---
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+library(dplyr)
+library(tidyverse)
+
+```
+
+# Introduction
+
+# Domain knowledge
+
+# Data sources
+
+## World bank data
+
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+library(WDI)
+ 
+#get datasets on emissions
+datasets = WDIsearch("emissions")
+
+# get Total greenhouse gas emissions (kt of CO2 equivalent)
+
+ghg_emissions_wb = WDI(indicator='EN.ATM.GHGT.KT.CE')
+
+# get all world data
+ghg_emissions_wb_world = ghg_emissions_wb %>% 
+  filter(country == "World")
+
+# print table
+print(head(ghg_emissions_wb_world))
+
+``` 
+
+## World Resources Institute
