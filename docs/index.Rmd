@@ -347,6 +347,7 @@ All CAIT data carries a Creative Commons Attribution-NonCommercial 4.0 Internati
 
 CAIT 2.0 UNFCCC data derives directly from United Nations Framework Convention on Climate Change (UNFCCC) Secretariat. Additionally to citing CAIT 2.0 please consider citing UNFCCC data source that CAIT 2.0 is using: United Nations Framework Convention on Climate Change (UNFCCC) Secretariat. 2013. "Time Series – Annex I." Bonn: UNFCCC.
 
+- https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=cait&historical-emissions-gases=all-ghg&historical-emissions-regions=All%20Selected&historical-emissions-sectors=total-including-lucf&page=1
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 # data processing
@@ -593,6 +594,23 @@ OGS_ghg_emission %>%
 ## Data sources
 
 ### European Environmental Agency
+
+- Data for download: https://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-16
+
+- National emissions reported to the UNFCCC and to the EU Greenhouse Gas Monitoring Mechanism: Data on greenhouse gas emissions and removals, sent by countries to UNFCCC and the EU Greenhouse Gas Monitoring Mechanism (EU Member States). This data set reflects the GHG inventory data for 2020 as reported under the United Nations Framework Convention for Climate Change.
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+
+eea_data_url <- "https://github.com/OpenGeoScales/CarbonData/blob/main/datasets/raw/eea/UNFCCC_v23.csv.zip"
+temp <- tempfile()
+download.file(eea_data_url, temp)
+unzip(temp, "UNFCCC_v23.csv")
+ghg_emissions_eea <- read.csv("UNFCCC_v23.csv")
+unlink(temp)
+
+print(head(ghg_emissions_eea))
+```
+
 
 ## Data comparison
 
