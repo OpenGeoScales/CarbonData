@@ -1,7 +1,7 @@
 ---
-title: "Carbon Data Analysis v2"
+title: "Carbon Data Analysis"
 author: "Saif Shabou"
-date: "25/11/2020"
+date: "24/02/2021"
 output: 
   html_document:
     toc: true
@@ -25,15 +25,133 @@ library(kableExtra)
 
 # Domain knowledge
 
-# Country scale
+## Grennhouse Gases (GHG)
+
+### Definition
+
+- Greenhouse gases constitute a group of gases contributing to global warming and climate change.
+- Greenhouse gases are gases that trap heat in the atmosphere. 
+- Without greenhouse gases, the average temperature of Earth’s surface would be about -18° rather than the present average of 15°.
+- Atmospheric concentrations are determined by the balance between sources (emissions of the gas from human activities and natural systems) and sinks (the removal of the gas from the atmosphere by conversion to a different chemical compound or absorption by bodies of water).
+
+### List
+
+The primary greenhouse gases in Earth’s atmosphere are water vapor (H2O), carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O) and ozone (O3).
+
+-**Carbon dioxide (CO2):**
+
+  - Carbon dioxide enters the atmosphere through burning fossil fuels (coal, natural gas, and oil), solid waste, trees and other biological materials, and also as a result of certain chemical reactions (e.g., manufacture of cement).
+  - Carbon dioxide is removed from the atmosphere (or “sequesterd”) when it is absorbed by plants as part of the biological carbon cycle.
+
+-**Methane (CH4):**
+
+  - Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices.
+  
+-**Nitrous oxide (N2O):**
+
+  - Nitrous oxide is emitted during agricultural and industrial activities, combustion of fossil fuels and solid waste, as well as during treatment of wastewater.
+
+-**Fluorinated gases:**
+
+  - Hydrofluocarbons, perfluocarbons, sulfur hexafluoride, and nitrogen trfluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in sammer quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase
+  
+### Sources
+
+- The vast majority of anthropogenic carbon dioxide emissions come from combustion of fossil fuels, principally coal, oil and natural gas, with additional contributions coming from deforestation and other changes in land use.
+
+### Global Warming Potential
+
+GHGs warm the earth by absorbing energy and slowing the rate at which the energy escapes to space. Different GHGs can have different effects on the earth’s warming depending on their ability to absorb energy (radiative efficiency) and how long they stay in the atmosphere (lifetime).
+
+The Global Warming Potential was developed to allow comparisons of the global warming impacts of different gases. It is a measure of how much energy the emission of 1 ton of a gas will absorb over a given period of time, relative to the emissions of 1 ton of carbon dioxide. The larger the GWP, the more that given gas warms the earth compared to CO2 over that time period (usually 100 years). GWP provides a common unit of measure which allows analysts to add up emissions estimates of different gases (e.g., to compile a national GHG inventory), and allows policymakers to compare emissions reduction opportunities across sectors. 
+
+- CO2, by definition, has a GWP of 1 regardless of the time period used since it is the gas used as the reference. CO2 emissions cause an increase in the atmospheric concentrations that will least thousands of years.
+
+- Methane (CH4) is estimated to have a GWP of 28-36 over 100 years. CH4 emitted today lasts about a decade on average, which is much less time thanCO2. But CH4 absorbs much more energy than CO2.
+
+- Nitrous Oxide (N2O) has a GWP 265-298 times that of CO2 for a 100-year timescale. BO2 emitted today remains in the atmosphere for more than 100 years, on average.
+
+- Fluorinated gases are high-GWP gases because, for a given amount of mass, they trap substantially more than CO2. The GWPs for these gases can be in the thousands or tens of thousands.
+
+
+## Glossary
+
+- [UNFCCC convention](https://unfccc.int/process-and-meetings/the-convention/what-is-the-united-nations-framework-convention-on-climate-change)
+- [Kyoto protocol](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-a&chapter=27&clang=_en):
+  - https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Kyoto_Protocol
+- [Paris Agreement](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-d&chapter=27&clang=_en)
+
+### Carbon Budget
+
+- A carbon budget is an upper limit of total CO2 emissions associated with remaining below a specific global average - temperature.
+
+- Global emissions budgets are calculated according to historical cumulative emissions from fossil, industrial processes, and land use change, but vary according to the global temperature target that is chosen, the probability of staying below that target, and the emissions of other non CO2 greenhouse gases.
+
+- Emissions budgets are relevant to climate change mitigation because they indicate a finite amount of carbon dioxide that can be emitted over time, before resulting in dangerous levels of global warming.
+
+
+# World scale
 
 ## Data sources
 
 ### World bank data
 
-#### Data provider
+### The United Nations Framework Convention on Climate Change (UNFCCC)
 
-#### Data exploration
+- **History:** 
+
+- The UNFCCC is an international environmental treaty addressing climate change, negotiated by 154 states at tht United Nations Conference on Environment and Development, informally known as the Earth Summit, held in Rio de Janiero in 1992.
+- The Climate Change Convention entered into force on 21 March 1994.
+Adopted in 1992 at the Rio Earth Summit, most members of the Organization for Economic Cooperation and Development (OECD) plus the states of Central and Eastern Europe - known collectively as Annex I countries - are committed to adopting policies and measures aimed at returning their greenhouse-gas emissions to 1990 levels by the year 2000. All Parties develop and submit "national communications" containing inventories of greenhouse gas emissions by source and greenhouse gas removals by sinks.
+
+- **Objectives:**
+
+  - The UNFCCC seeks for the stabilization of greenhouse gas concentrations in the atmosphere at a level that would prevent dangerous anthropogenic human-induced interferences with the earth’s climate system.
+  - Definition guidelines for submitting annual national greenhouse gas emissions inventories
+  - The GHG data displayed on the UNFCC website are data from official submissions of GHG emissions/removals data by countries that are Parties to the Climate Change Convention.
+
+- **Parties:**
+
+The Convention divides countries into three main groups according to differing [commitments](https://unfccc.int/process/parties-non-party-stakeholders/parties-convention-and-observer-states). Here is the description of these categories ([source](https://unfccc.int/parties-observers)). 
+
+    -Annex I Parties include the Industrialized  countries that were members of the OECD (Organization for Economic Co-operation and Development) in 1992, plus countries with economies in transition (the EIT parties), including the Russian Federation, the Baltic States, and several Central and Eastern European States.
+    
+    -Annex II Parties consist of the OECD members of Annex I, but not the EIT Parties. They are required to provide financial resources to enable developing countries to undertake emissions reduction activities under the Convention and to help them adapt to adverse effects of climate change.
+    
+    - Non-Annex I Parties are mostly developing countries. Certain groups of developing countries are recognized by the Convention as being especially vulnerable to the adverse impacts of climate change, including countries with low-lying coastal areas and those prone to desertification and drought. Others (such as countries that rely heavily on income from fossil fuel production and commerce) feel more vulnerable to the potential economic impacts of climate change response measures.
+    
+
+### World Resources Institute
+
+- **CAIT - Historical Emissions Data**:
+
+CAIT Historic allow for easy access, analysis and visualization of the latest available international greenhouse gas emissions data. It includes information for 191 countries and the European Union, 50 U.S. states, 6 gases, multiple economic sectors, and 160 years - carbon dioxide emissions for 1850-2014 and multi-sector greenhouse gas emission for 1990-2014. 
+
+More description is available [here](https://www.wri.org/resources/data-sets/cait-historical-emissions-data-countries-us-states-unfccc)
+
+### Eurpean Environmental Agency (EEA)
+
+- https://ec.europa.eu/eurostat/web/climate-change/data
+- https://ec.europa.eu/eurostat/web/climate-change/data/database
+- https://ec.europa.eu/eurostat/databrowser/view/sdg_13_10/default/table?lang=en
+- https://ec.europa.eu/eurostat/databrowser/view/sdg_13_10/default/table?lang=en
+- https://ec.europa.eu/eurostat/statistics-explained/index.php/Greenhouse_gas_emission_statistics
+- https://www.eea.europa.eu/themes/air/links/data-sources/emission-database-for-global-atmospheric
+- https://edgar.jrc.ec.europa.eu/overview.php?v=booklet2018&dst=CO2pc
+- https://www.eea.europa.eu/data-and-maps/indicators/greenhouse-gas-emission-trends-7/assessment
+- https://www.eea.europa.eu/data-and-maps/data/greenhouse-gas-emission-projections-for-7
+- https://www.eea.europa.eu/data-and-maps/data#c0=5&c11=&c5=all&b_start=0
+- https://www.eea.europa.eu/data-and-maps/data/approximated-estimates-for-greenhouse-gas-emissions-2
+- https://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-16
+- https://edgar.jrc.ec.europa.eu/overview.php?v=temp_profile
+- https://edgar.jrc.ec.europa.eu/overview.php?v=50_GHG
+
+## Data sources exploration
+
+### World Bank 
+
+- Data collection: 
+
 
 - Total greenhouse gas emissions (kt of CO2 equivalent)
 
@@ -76,12 +194,8 @@ ghg_emissions_wb_world %>%
 
 ### World Resources Institute
 
-#### Data provider
-
-#### Data exploration
-
 - Data is provided by API or download
-- In this example we will explore the dwonloaded data
+- In this example we will explore the downloaded data
 
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
@@ -197,9 +311,42 @@ knitr::kable(list(gas_CAIT, gas_PIK, gas_GCP, gas_UNFCCC_AI, gas_UNFCCC_NAI)) %>
 
 ```
 
-##### CAIT data source
+- **Number of countries by data source** The number of considered countries is not the same depending on the data sources as shown in the table below:
 
-In this example we will only on CAIT data source
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+ghg_emissions_wri %>% 
+  group_by(Data.source) %>% 
+  summarise(Nb.Country=length(unique(Country))) %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F, font_size = 13) 
+
+```
+
+  - *CAIT* data source contains data for **193** distinct countries (all countries that are [member states of the United Nations](https://www.worldometers.info/united-nations/)) with aggregated data on world scale (`World`) and European Union (`European Union (27)`)
+  
+  - *GCP* data source contains data for the **193** countries members states of the United Nations plus the state of Palestine and  aggregated data on world scale (`World`) and European Union (`European Union (27)`) 
+  
+  - *PIK* data source contains data for the **193** countries members states of the United Nations in addition to aggregated data on groups of countries such as: `Umbrella Group`, `Least Developed Countries`, `Non-Annex-I Parties to the Convention`, `Annex-I Parties to the Convention`...
+  
+  - *UNFCCC Annex I* data source contains data for **43** countries members of the Annex I convention with aggregated data on belonging parties (`Annex-I Parties to the Convention`) and European Union scale (`European Union (27)`). 
+  
+  - *UNFCCC Non-Annex I* data source contains data for **148** countries that are parts of the non-Annex I convention. 
+
+
+#### WRI - CAIT 
+
+- *Description**: 
+
+CAIT Historic allow for easy access, analysis and visualization of the latest available international greenhouse gas emissions data. It includes information for 191 countries and the European Union, 50 U.S. states, 6 gases, multiple economic sectors, and 160 years - carbon dioxide emissions for 1850-2014 and multi-sector greenhouse gas emission for 1990-2014. 
+
+More description is available [here](https://www.wri.org/resources/data-sets/cait-historical-emissions-data-countries-us-states-unfccc)
+
+- **License and reuse**: 
+
+All CAIT data carries a Creative Commons Attribution-NonCommercial 4.0 International license. This means CAIT data and analysis can be used in non-commercial applications, provided clear attribution to WRI/CAIT is given. Additionally to citing CAIT it is recommanded consider citing the data sources that CAIT is using.
+
+CAIT 2.0 UNFCCC data derives directly from United Nations Framework Convention on Climate Change (UNFCCC) Secretariat. Additionally to citing CAIT 2.0 please consider citing UNFCCC data source that CAIT 2.0 is using: United Nations Framework Convention on Climate Change (UNFCCC) Secretariat. 2013. "Time Series – Annex I." Bonn: UNFCCC.
+
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 # data processing
@@ -246,6 +393,49 @@ ghg_emissions_wri_CAIT %>%
 
 ```
 
+#### WRI - GCP 
+
+#### WRI - UNFCCC 
+
+#### WRI - PIK
+
+### Our world in data
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+# read co2 data
+ghg_emissions_owid= read.csv("https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv", 
+                             encoding = "UTF-8")
+
+ghg_emissions_owid_world = ghg_emissions_owid %>% 
+  filter(country == "World")
+
+```
+
+-**Data description:**
+
+- **Data exploration:**
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+ghg_emissions_owid_world %>% 
+  # filter(year >= 1990 & country == "World") %>%
+  plot_ly() %>% 
+  add_trace(y = ~co2, 
+            x = ~year, 
+            # marker = list(color = "gray"),
+            type = 'scatter',
+            # type = "line",
+            mode = 'lines+markers',
+            orientation = "v",
+            hoverinfo = 'text',
+            text = ~paste('</br> Year: ', year,
+                          '</br> Value: ', co2,
+                          '</br> Gas: ', "CO2",
+                          '</br> Sector: ', "All",
+                          '</br> Source: ', "Ourw World In Data")) %>% 
+  layout(title = "CO2 emissions (source: Our World In  Data)",
+         yaxis = list(title = "CO2 emissions"), 
+         xaxis = list(title = "Years")) 
+```
 
 ## Data normalization
 
@@ -288,11 +478,11 @@ OGS_ghg_emission = data.frame(data.source = as.character(),
 - **Mapping WB data**
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
-OGS.MAP.WB = function(Worldbank_data, start_date, end_date){
+OGS.MAP.WB = function(Worldbank_data, start_date, end_date, geoscale){
   Worldbank_data_OGS = Worldbank_data %>% 
     add_column(data.source = "World.Bank",
                data.provider = "World.Bank",
-               geo.scale = "Country",
+               geo.scale = geoscale,
                sector = "All",
                gas = "All",
                geo.code.iso3c = NA,
@@ -310,16 +500,17 @@ OGS.MAP.WB = function(Worldbank_data, start_date, end_date){
 
 Worldbank_data_OGS = OGS.MAP.WB(ghg_emissions_wb_world,
                                 start_date = 1970,
-                                end_date = 2012 )
+                                end_date = 2012,
+                                geoscale = "World")
 ```
 
 - **Mapping WRI-CAIT data**
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
-OGS.MAP.WRI.CAIT = function(wri_data, start_date, end_date){
+OGS.MAP.WRI.CAIT = function(wri_data, start_date, end_date, geoscale){
   wri_data_OGS = wri_data %>% 
     add_column(data.provider = "WRI.CAIT",
-               geo.scale = "Country",
+               geo.scale = geoscale,
                sector = "All",
                geo.code.iso3c = NA,
                geo.code.iso2c = NA,
@@ -338,19 +529,46 @@ OGS.MAP.WRI.CAIT = function(wri_data, start_date, end_date){
 
 wri_data_OGS = OGS.MAP.WRI.CAIT(ghg_emissions_wri_CAIT,
                                 start_date = 1990,
-                                end_date = 2016 )
+                                end_date = 2016,
+                                geoscale = "World")
 
 ```
 
+- **Mapping OWID data**
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+OGS.MAP.OWID = function(owid_data, geoscale){
+  owid_data_OGS = owid_data %>% 
+    add_column(data.provider = "OWID",
+               data.source = "OWID",
+               geo.scale = geoscale,
+               sector = "All",
+               geo.code.iso2c = NA,
+               unit = "MtCO₂",
+               gas = "CO2") %>% 
+    rename(geo.code.iso3c = iso_code,
+           geo.name = country,
+           value = co2) %>% 
+    select(data.source, data.provider, geo.scale, geo.code.iso2c, geo.code.iso3c, geo.name,
+           year, sector, gas, value) 
+  
+  return(owid_data_OGS)
+}
+
+owid_data_OGS = OGS.MAP.OWID(ghg_emissions_owid_world,
+                             geoscale = "World")
+```
 
 ### Normalized data exploration
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 OGS_ghg_emission = bind_rows(Worldbank_data_OGS, 
-                             wri_data_OGS)
+                             wri_data_OGS,
+                             owid_data_OGS)
 
 # plot timeserie
 OGS_ghg_emission %>% 
+  filter(year >= 1990) %>%
   plot_ly() %>% 
   add_trace(y = ~value, 
             x = ~year, 
@@ -368,8 +586,134 @@ OGS_ghg_emission %>%
   layout(title = "World GHG emissions",
          yaxis = list(title = "GHG emissions (MtCO₂)"), 
          xaxis = list(title = "Years"))
+```
+
+# Country scale: France use case
+
+## Data sources
+
+### European Environmental Agency
+
+## Data comparison
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+# wb fr mapping
+#################################
+
+ghg_emissions_wb_fr = ghg_emissions_wb %>% 
+  filter(country == "France")
+
+Worldbank_data_OGS_fr = OGS.MAP.WB(ghg_emissions_wb_fr,
+                                start_date = 1970,
+                                end_date = 2012,
+                                geoscale = "Country")
+
+# WRI - CAIT fr mapping
+####################################
+
+
+ghg_emissions_wri_CAIT_fr = ghg_emissions_wri %>% 
+  # select all world data & all gases data & total sector
+  filter(Data.source == "CAIT",
+         Country == "France",
+         Gas == "All GHG",
+         Sector == "Total including LUCF") %>% 
+  # pivot data
+  pivot_longer(
+    cols = starts_with("X"), 
+    names_to = "year",
+    names_prefix = "X",
+    values_to = "value") %>% 
+  mutate_at("year" , as.numeric) %>% 
+  arrange(year)
+
+
+wri_data_OGS_fr = OGS.MAP.WRI.CAIT(ghg_emissions_wri_CAIT_fr,
+                                start_date = 1990,
+                                end_date = 2016,
+                                geoscale = "Country")
+
+
+
+
+# WRI UNFCCC_AI
+###############################
+
+ghg_emissions_wri_UNFCCC_AI_fr = ghg_emissions_wri %>% 
+  # select all world data & all gases data & total sector
+  filter(Data.source == "UNFCCC_AI",
+         Gas == "Aggregate GHGs",
+         Sector == "Total GHG emissions with LULUCF",
+         Country == "France") %>% 
+  # pivot data
+  pivot_longer(
+    cols = starts_with("X"), 
+    names_to = "year",
+    names_prefix = "X",
+    values_to = "value") %>% 
+  mutate_at("year" , as.numeric) %>% 
+  arrange(year)
+
+OGS.MAP.WRI.UNFCCC = function(wri_data, start_date, end_date, geoscale){
+  wri_data_OGS = wri_data %>% 
+    add_column(data.provider = "WRI.UNFCCC",
+               geo.scale = geoscale,
+               sector = "All",
+               geo.code.iso3c = NA,
+               geo.code.iso2c = NA,
+               unit = "MtCO₂e") %>% 
+    rename(data.source = Data.source,
+           geo.name = Country,
+           gas = Gas,
+           value = value) %>% 
+    select(data.source, data.provider, geo.scale, geo.code.iso2c, geo.code.iso3c, geo.name,
+           year, sector, gas, value) %>% 
+    filter(year >= start_date & year <= end_date) %>% 
+    mutate_at("value" , as.numeric) 
+  
+  return(wri_data_OGS)
+}
+
+wri_UNFCCC_data_OGS_fr = OGS.MAP.WRI.UNFCCC(ghg_emissions_wri_UNFCCC_AI_fr,
+                                   start_date = 1990,
+                                   end_date = 2016,
+                                   geoscale = "Country")
+
+
+
+# bind rows
+################################
+
+OGS_ghg_emission_fr = bind_rows(Worldbank_data_OGS_fr, 
+                                wri_data_OGS_fr,
+                                wri_UNFCCC_data_OGS_fr)
+
+# plot timeserie
+################################
+
+OGS_ghg_emission_fr %>% 
+  filter(year >= 1990) %>%
+  plot_ly() %>% 
+  add_trace(y = ~value, 
+            x = ~year, 
+            color = ~data.provider,
+            type = 'scatter',
+            # type = "line",
+            mode = 'lines+markers',
+            orientation = "v",
+            hoverinfo = 'text',
+            text = ~paste('</br> Year: ', year,
+                          '</br> Value: ', value,
+                          '</br> Gas: ', gas,
+                          '</br> Sector: ', sector,
+                          '</br> Source: ', data.provider)) %>% 
+  layout(title = "France GHG emissions",
+         yaxis = list(title = "GHG emissions (MtCO₂)"), 
+         xaxis = list(title = "Years"))
 
 ```
+
+
 
 # City scale
 
