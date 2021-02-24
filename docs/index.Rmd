@@ -5,7 +5,7 @@ date: "25/11/2020"
 output: 
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 4
     theme: spacelab
     highlight: tango
     number_sections: yes
@@ -25,10 +25,17 @@ library(kableExtra)
 
 # Domain knowledge
 
-# Data sources
+# Country scale
 
-## World bank data
+## Data sources
 
+### World bank data
+
+#### Data provider
+
+#### Data exploration
+
+- Total greenhouse gas emissions (kt of CO2 equivalent)
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 library(WDI)
@@ -67,4 +74,302 @@ ghg_emissions_wb_world %>%
 
 ``` 
 
-## World Resources Institute
+### World Resources Institute
+
+#### Data provider
+
+#### Data exploration
+
+- Data is provided by API or download
+- In this example we will explore the dwonloaded data
+
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+# load data
+ghg_emissions_wri = read.csv("https://raw.githubusercontent.com/OpenGeoScales/CarbonData/feature-article/datasets/raw/wri/historical_emissions/historical_emissions.csv", 
+                             encoding = "UTF-8")
+
+```
+
+- Data contains GHG emissions timeserie in wide format
+
+Column | Description |
+---| ---|
+Country | The country name |
+Data.source | Five data sources: `CAIT`, `PIK`, `GCP`, `UNFCCC_AI`, `UNFCCC_NAI` |
+Sector | 30 categories of sectors: `Total including LUCF`,`Total excluding LUCF`, `Total fossil fuels and cement`, `Electricity/Heat`, `Coal`, `Oil`... |
+Gas | 8 categories of sectors: `All GHG`,`KYOTOGHG`, `CO2`, `Aggregate GHGs`, `CH4`, `N2O`, `F-Gas` , `Aggregate F-gases`|
+Unit | One unit: `MtCO₂e` |
+1850 | Emission quantity in 1850 |
+1851 | Emission quantity in 1850 |
+.. | Emission quantity in 1851 |
+2019 | Emission quantity in 2019 |
+
+
+- **Sector categories by data source** : Categories used for sectors and gases depend on data source. 
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+# get sectors from different data sources
+sector_CAIT = ghg_emissions_wri %>% 
+  filter(Data.source == "CAIT") %>% 
+  distinct(Sector) %>% 
+  select(Sector.CAIT = Sector) %>% 
+  arrange(Sector.CAIT)
+
+sector_PIK = ghg_emissions_wri %>% 
+  # select PIK datasource
+  filter(Data.source == "PIK") %>% 
+  distinct(Sector) %>% 
+  select(Sector.PIK = Sector) %>% 
+  arrange(Sector.PIK)
+
+sector_GCP = ghg_emissions_wri %>% 
+  # select GCP datasource
+  filter(Data.source == "GCP") %>% 
+  distinct(Sector) %>% 
+  select(Sector.GCP = Sector) %>% 
+  arrange(Sector.GCP)
+
+sector_UNFCCC_AI = ghg_emissions_wri %>% 
+  # select UNFCCC_AI datasource
+  filter(Data.source == "UNFCCC_AI") %>% 
+  distinct(Sector) %>%  
+  select(Sector.UNFCCC_AI = Sector) %>% 
+  arrange(Sector.UNFCCC_AI)
+
+sector_UNFCCC_NAI = ghg_emissions_wri %>% 
+  # select UNFCCC_NAI datasource
+  filter(Data.source == "UNFCCC_NAI") %>% 
+  distinct(Sector) %>% 
+  select(Sector.UNFCCC_NAI = Sector) %>% 
+  arrange(Sector.UNFCCC_NAI)
+
+# plot table
+knitr::kable(list(sector_CAIT, sector_PIK, sector_GCP, sector_UNFCCC_AI, sector_UNFCCC_NAI)) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F, font_size = 12) %>% 
+  scroll_box(width = "100%", height = "200px")
+
+```
+
+- **Gas categories by data source** : Categories used for gases depend on data source.
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+
+# get gas from different data sources
+gas_CAIT = ghg_emissions_wri %>% 
+  filter(Data.source == "CAIT") %>% 
+  distinct(Gas) %>% 
+  select(Gas.CAIT = Gas) %>% 
+  arrange(Gas.CAIT)
+
+gas_PIK = ghg_emissions_wri %>% 
+  # select PIK datasource
+  filter(Data.source == "PIK") %>% 
+  distinct(Gas) %>% 
+  select(Gas.PIK = Gas) %>% 
+  arrange(Gas.PIK)
+
+gas_GCP = ghg_emissions_wri %>% 
+  # select GCP datasource
+  filter(Data.source == "GCP") %>% 
+  distinct(Gas) %>% 
+  select(Gas.GCP = Gas) %>% 
+  arrange(Gas.GCP)
+
+gas_UNFCCC_AI = ghg_emissions_wri %>% 
+  # select UNFCCC_AI datasource
+  filter(Data.source == "UNFCCC_AI") %>% 
+  distinct(Gas) %>%  
+  select(Gas.UNFCCC_AI = Gas) %>% 
+  arrange(Gas.UNFCCC_AI)
+
+gas_UNFCCC_NAI = ghg_emissions_wri %>% 
+  # select UNFCCC_NAI datasource
+  filter(Data.source == "UNFCCC_NAI") %>% 
+  distinct(Gas) %>% 
+  select(Gas.UNFCCC_NAI = Gas) %>% 
+  arrange(Gas.UNFCCC_NAI)
+
+# plot table
+knitr::kable(list(gas_CAIT, gas_PIK, gas_GCP, gas_UNFCCC_AI, gas_UNFCCC_NAI)) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F, font_size = 12) %>% 
+  scroll_box(width = "100%", height = "200px")
+
+```
+
+##### CAIT data source
+
+In this example we will only on CAIT data source
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+# data processing
+
+ghg_emissions_wri_CAIT = ghg_emissions_wri %>% 
+  # select all world data & all gases data & total sector
+  filter(Data.source == "CAIT",
+         Country == "World", 
+         Gas == "All GHG",
+         Sector == "Total including LUCF") %>% 
+  # pivot data
+  pivot_longer(
+    cols = starts_with("X"), 
+    names_to = "year",
+    names_prefix = "X",
+    values_to = "value") %>% 
+  mutate_at("year" , as.numeric) %>% 
+  arrange(year)
+
+# plot table
+ghg_emissions_wri_CAIT %>% 
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F, font_size = 13) %>% 
+  scroll_box(width = "100%", height = "200px")
+```
+
+We observe that we don't have values for years before 1990 neither after 2017.
+Let's plot the timeserie:
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+ghg_emissions_wri_CAIT %>% 
+  filter(year >= 1990 & year < 2017) %>% 
+  plot_ly() %>% 
+  add_trace(y = ~value, 
+            x = ~year, 
+            marker = list(color = "gray"),
+            type = 'scatter',
+            # type = "line",
+            mode = 'lines+markers',
+            orientation = "v") %>% 
+  layout(title = "World GHG emissions (source: WRI - CAIT)",
+         yaxis = list(title = "GHG emissions"), 
+         xaxis = list(title = "Years"))
+
+```
+
+
+## Data normalization
+
+### data modeling
+
+- We propose a data model for mapping the various data source identified
+
+Column name | Type | Description |
+---|---|---| 
+data.source | string |  |
+data.provider | string |  |
+geo.scale | string |  |
+geo.code.iso2c | string |  |
+geo.code.iso3c | string |  |
+geo.name | string |  |
+year | numeric |  |
+sector | string |  |
+gas | string |  |
+value | numeric |  |
+unit | string |  
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+# create dataset
+OGS_ghg_emission = data.frame(data.source = as.character(),
+                              data.provider = as.character(),
+                              geo.scale = as.character(),
+                              geo.code.iso2c = as.character(),
+                              geo.code.iso3c = as.character(),
+                              geo.name = as.character(),
+                              year = as.numeric(),
+                              sector = as.character(),
+                              gas = as.character(),
+                              value = as.numeric(),
+                              unit = as.character())
+
+```
+
+### Data mapping
+
+- **Mapping WB data**
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+OGS.MAP.WB = function(Worldbank_data, start_date, end_date){
+  Worldbank_data_OGS = Worldbank_data %>% 
+    add_column(data.source = "World.Bank",
+               data.provider = "World.Bank",
+               geo.scale = "Country",
+               sector = "All",
+               gas = "All",
+               geo.code.iso3c = NA,
+               unit = "MtCO₂e") %>% 
+    rename(geo.code.iso2c = iso2c,
+           geo.name = country,
+           value = EN.ATM.GHGT.KT.CE) %>% 
+    select(data.source, data.provider, geo.scale, geo.code.iso2c, geo.code.iso3c, geo.name,
+           year, sector, gas, value) %>% 
+    filter(year >= start_date & year <= end_date) %>% 
+    mutate(value = value * 0.001)
+  
+  return(Worldbank_data_OGS)
+}
+
+Worldbank_data_OGS = OGS.MAP.WB(ghg_emissions_wb_world,
+                                start_date = 1970,
+                                end_date = 2012 )
+```
+
+- **Mapping WRI-CAIT data**
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+OGS.MAP.WRI.CAIT = function(wri_data, start_date, end_date){
+  wri_data_OGS = wri_data %>% 
+    add_column(data.provider = "WRI.CAIT",
+               geo.scale = "Country",
+               sector = "All",
+               geo.code.iso3c = NA,
+               geo.code.iso2c = NA,
+               unit = "MtCO₂e") %>% 
+    rename(data.source = Data.source,
+           geo.name = Country,
+           gas = Gas,
+           value = value) %>% 
+    select(data.source, data.provider, geo.scale, geo.code.iso2c, geo.code.iso3c, geo.name,
+           year, sector, gas, value) %>% 
+    filter(year >= start_date & year <= end_date) %>% 
+    mutate_at("value" , as.numeric) 
+  
+  return(wri_data_OGS)
+}
+
+wri_data_OGS = OGS.MAP.WRI.CAIT(ghg_emissions_wri_CAIT,
+                                start_date = 1990,
+                                end_date = 2016 )
+
+```
+
+
+### Normalized data exploration
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+OGS_ghg_emission = bind_rows(Worldbank_data_OGS, 
+                             wri_data_OGS)
+
+# plot timeserie
+OGS_ghg_emission %>% 
+  plot_ly() %>% 
+  add_trace(y = ~value, 
+            x = ~year, 
+            color = ~data.provider,
+            type = 'scatter',
+            # type = "line",
+            mode = 'lines+markers',
+            orientation = "v",
+            hoverinfo = 'text',
+            text = ~paste('</br> Year: ', year,
+                          '</br> Value: ', value,
+                          '</br> Gas: ', gas,
+                          '</br> Sector: ', sector,
+                          '</br> Source: ', data.provider)) %>% 
+  layout(title = "World GHG emissions",
+         yaxis = list(title = "GHG emissions (MtCO₂)"), 
+         xaxis = list(title = "Years"))
+
+```
+
+# City scale
+
