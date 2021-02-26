@@ -75,15 +75,24 @@ The Global Warming Potential was developed to allow comparisons of the global wa
 
 
 
-## GHG inventory
+## GHG inventory and assessment
+
+A GHG assessment is an evaluation of the quantity of emitted (or captured and stored) GHGs in the atmosphere over one year resulting from the activities of an organization or a territory.
+
+### Methodology
+
+The methodological princiles vary considerably depending on the type of assessment that is carried out.
+
+- GHG organizational reporting (companies, collectivities, public establishments)
+- GHG reporting for territories
+
+The Chapter 8 of the IPCC report provides framewsork and guidance for reporting complete, consistent and transparent national greeenhouse gas inventories, regardless the method used to produce the data.
+
+- [Link to the IPCC reporting guideline](https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/1_Volume1/V1_8_Ch8_Reporting_Guidance.pdf)
+- [2006 IPCC guidelines for National Greenhouse Gas INventories](https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol1.html)
 
 
-- Link to the IPCC reporting guideline: https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/1_Volume1/V1_8_Ch8_Reporting_Guidance.pdf
-- 2006 IPCC guidelines for National Greenhouse Gas INventories: https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol1.html
-
-- The Chapter 8 of the IPCC report provides framewsork and guidance for reporting complete, consistent and transparent national greeenhouse gas inventories, regardless the method used to produce the data.
-
-### Coverage
+### Geographical Coverage
 
 - The *2006 Guidelines* are designed to estimate and report on national inventories of anthropogenic greenhouse gas emissions and removels. Anthropogenic emissions and removeals means that greenhouse gas emissions and removals in national inventories are a result of human activities.
 
@@ -123,6 +132,23 @@ Scope 2 covers indirect GHG emissions from consumption of purchased electricity,
 - **Scope 1: Other indirect GHG emissions**
 
 Scope 3 covers other indirect emissions, such as the extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. transmission and distribution (T&D) losses) not covered in Scope 2, outsourced activities, waste disposal, etc. Scope 3 emissions (also known as value chain emissions) often represent the largest source of greenhouse gas emissions and in some cases can account for up to 90% of the total carbon impact.
+
+### Frameworks
+#### Bilan carbone
+
+In France, ADEME published in 2004 a methodology for quantifying greenhouse gas emissions for organizations, called the Bilan Carbone®. This method is today coordinated and dissiminated by the [Association Bilan carbone](https://www.associationbilancarbone.fr/). 
+
+The Bilan Carbone® method takes account of all greenhouse gases defined by the IPCC for all physical flows without which the organization could not function. This method therefore allows companies and territorial collectivities to carry out a global assessment of GHG emissions, whether direct or indirect. A method has been specifically developed on the territorial scale.
+
+#### GHG Protocol
+
+In 1998, the World Business Council for Sustainable Development (WBCSD) and the World Resources Institutes (WRI) developed, in partnership with companies, NGOs and State representatives, the [GHG Protocol](https://ghgprotocol.org/): "A Corporate Accounting and Reporting Standard". 
+
+This protocol, extensively disseminated internationally, served as the basis for drafting ISO 14064-1:2006.
+
+In October 2011, the GHG Protocol was supplemented by the "Corporate Value Chain (Scope 3) Accounting and Reporting Standard", which details in particular the potential indirect GHG emission categories for an organization.
+
+Since July 2014, a method dedicated to Territories has been made available: the Global Protocol for Community-scale GHG emissions.
 
 ## Glossary
 
@@ -997,11 +1023,23 @@ OGS_ghg_emission_fr %>%
 ```
 
 
-# City scale: France use case
+# Sub-national scale: France use case
 
-## Data soruces
+## Introduction
+
+GHG reporting for sub-national territories may refer to multiple geographical divisions such as: municipalities, districts, regions...
+Different approaches may be undertaken for assessing carbon footprint of territories:
+
+- **Spatial inventory of GHG emissions:** It refers to national methods used under Kyoto Protocol applied at the territorial level; It covers direct emissions and Scope 2 emissions. Examples of frameworks: [OMINEA](https://www.citepa.org/fr/ominea/)
+- **Holistic approach:** It consists of assessing all the emissions produced by territory activity, including direct and indirecte emissions. Examples of frameworks: Bilan Carbone® Territoire; Global Protocol for Community...
+- **Consumption approach:** It refers to assessing all emissions ,ecessary for inhabitants in a territory, including direct and indirect emissions  from importation.
+
+The ADEME provides in [this article](https://www.bilans-ges.ademe.fr/en/accueil/contenu/index/page/territory_reporting/siGras/0) a comprehensive comparison of these different approaches.
+
+## Data sources
 
 ### ADEME - BEGES
+
 
 #### Data exploration
 
