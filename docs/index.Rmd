@@ -18,6 +18,8 @@ library(tidyverse)
 library(knitr)
 library(plotly)
 library(kableExtra)
+library(leaflet)
+library(RColorBrewer)
 
 ```
 
@@ -1031,17 +1033,63 @@ GHG reporting for sub-national territories may refer to multiple geographical di
 Different approaches may be undertaken for assessing carbon footprint of territories:
 
 - **Spatial inventory of GHG emissions:** It refers to national methods used under Kyoto Protocol applied at the territorial level; It covers direct emissions and Scope 2 emissions. Examples of frameworks: [OMINEA](https://www.citepa.org/fr/ominea/)
-- **Holistic approach:** It consists of assessing all the emissions produced by territory activity, including direct and indirecte emissions. Examples of frameworks: Bilan Carbone® Territoire; Global Protocol for Community...
+- **Holistic approach:** It consists of assessing all the emissions produced by territory activity, including direct and indirect emissions. Examples of frameworks: Bilan Carbone® Territoire; Global Protocol for Community...
 - **Consumption approach:** It refers to assessing all emissions ,ecessary for inhabitants in a territory, including direct and indirect emissions  from importation.
 
-The ADEME provides in [this article](https://www.bilans-ges.ademe.fr/en/accueil/contenu/index/page/territory_reporting/siGras/0) a comprehensive comparison of these different approaches.
+ADEME provides in [this article](https://www.bilans-ges.ademe.fr/en/accueil/contenu/index/page/territory_reporting/siGras/0) a comprehensive comparison of these different approaches for GHG assessment.
 
 ## Data sources
 
 ### ADEME - BEGES
 
+#### Data exploration
+
+#### Data mapping
+
+### CITEPA - IGT
 
 #### Data exploration
+
+```{r warning=FALSE, message=FALSE, echo = TRUE}
+citepa_IGT = read.csv(file ="https://raw.githubusercontent.com/OpenGeoScales/CarbonData/main/datasets/raw/citepa/igt/IGT%20-%20Pouvoir%20de%20r%C3%A9chauffement%20global-full.csv",
+                                   encoding = "UTF-8")
+
+citepa_IGT_OGS = citepa_IGT %>% 
+  mutate(Total_emissions = rowSums(.[3:12], na.rm = TRUE))
+  
+
+# plot map of vulnerability index
+
+library(leaflet)
+library(RColorBrewer)
+
+pal <- colorQuantile(palette = "RdYlBu", n = 5,
+                     domain = citepa_IGT_OGS$Total_emissions,
+                     reverse = TRUE)
+
+labels <- sprintf(
+  "<strong>%s</strong><br/><strong>%s</strong><br/>",
+  paste("Name", citepa_IGT_OGS$Commune, sep=": "), 
+  paste("Total emissions", round(citepa_IGT_OGS$Total_emissions,2), sep =": ")
+) %>% 
+  lapply(htmltools::HTML)
+
+leaflet(data = citepa_IGT_OGS, height = 400, width = "100%") %>% 
+  addTiles() %>%
+  addProviderTiles(providers$CartoDB.DarkMatter) %>% 
+  addCircleMarkers(~lon, ~lat, 
+                   radius = 1,
+                   color = ~pal(Total_emissions),
+                   stroke = FALSE,
+                   fillOpacity = 0.7,
+                   weight = 100,
+                   popup = ~as.character(Commune), 
+                   label = labels) %>% 
+  addLegend(pal = pal, values = ~Total_emissions, opacity = 0.9, 
+            title = "Total emissions",
+            position = "bottomright",
+            labFormat = labelFormat(suffix = " "))
+```
 
 #### Data mapping
 
