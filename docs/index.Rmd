@@ -253,26 +253,50 @@ The Base Carbone® is a public database of emission factors, necessary for carry
 
 ### Citepa
 
+Created in 1961, [CITEPA (Technical Reference for Air Pollution and Climate Change)](https://www.citepa.org/en/about/) quantifies, identifies, expertises and reports atmospheric emissions data, explanatory variables and efficiency indicators, as well as methods for monitoring, quantifying, projecting and modeling emissions, policies and measures of mitigation and adaptation.
+
+As a non-profit organisation and State operator for the French Environment Ministry, the Citepa meets reporting requirements for air pollutants and greenhouse gas emissions from France in different inventory formats, such as UNFCCC, EMEP, and Kyoto Protocol.
+
+
+**National inventory data**
+
+Citepa officially estimates greenhouse gas and air polluant emissions each year on behalf of the Ministry of the Environment. his inventory is carried out as part of France’s international commitments, mainly under the United Nations Framework Convention on Climate Change (as well as the Kyoto Protocol and the Paris Agreement) for greenhouse gases, and the United Nations Economic Commission for Europe for pollutants (LRTAP Convention).
+
+All produced data and official reports can be download [from this page](https://www.citepa.org/fr/telechargements/).
+
+**IGT (Inventaire GES territorialisé)**
+
+The Ministry in charge of the Environment has entrusted the Interprofessional Technical Center for Atmospheric Pollution Studies (CITEPA) with a mission of “territorialization” or a “spatialization” of the national GHG inventory. The spatial resolution is the municipality level, and then aggeregated by EPCI. It is established from botha breakdown of national GHG emissions at municipal level and already spatialized information and can be downloaded through:
+
+- [ADEME Open Data Portal](https://data.ademe.fr/datasets/igt-pouvoir-de-rechauffement-global)
+- [Datagouv Open Data Portal](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/)
 
 
 ## Data modeling
 
 We propose a data model for mapping the various data source identified
 
-Column name | Type | Description |
----|---|---| 
-data.source | string |  |
-data.provider | string |  |
-geo.scale | string |  |
-geo.code.iso2c | string |  |
-geo.code.iso3c | string |  |
-geo.name | string |  |
-year | numeric |  |
-accounting.framework | string |  |
-sector | string |  |
-gas | string |  |
-value | numeric |  |
-unit | string |  |
+Column name | Type | Description | Examples |
+---|---|--------- | ---|
+data.provider | string | Short name of the entity delivering access to GHG emissions data which could come from multiple data sources. Data provider may not be the data producer. For example, the  World Resources Institute provides different GHG emissions data obtained from multiple sources (UNFCC, PIK...) | `WRI` `OWID` <br />  `EEA` `WB` <br /> `GCP`... |
+data.source | string | Short name of data source referring to the entity producing raw GHG emissions data obtained from organizations' inventories or aggregated data generated from a compilation of different sources. | `OWID` `PIK` <br /> `UNFCC` `GCP` <br /> `ADEME` `CITEPA`|
+accounting.framework | string | Name of inventory framework and methodology used for GHG emissions assessment. | `UNFCC` `ADEME` |
+geo.scale | string | Category of geo-spatial scale and geographical boundary considered in emissions data. As seen previously, various GHG emissions data are aggregated at a group of countries levels such as OECD states, European states, Annex I parties...  |`country scale` `city scale` <br /> `Group of countries scale` |
+geo.code.iso2c | string | Countries ISO 3166-1 alpha-2 codes | [List of alpha-2 ISO codes](https://www.iso.org/iso-3166-country-codes.html)|
+geo.code.iso3c | string | ISO 3166-1 alpha-3 codes | [List of alpha-3 ISO codes](https://www.iso.org/iso-3166-country-codes.html)|
+geo.name | string | ISO 3166-1 english country name | [List of english ISO country names](https://www.iso.org/iso-3166-country-codes.html) |
+year | numeric |  ||
+sector | date | Years corresponding to entity GHG emissions | |
+scope | date | Years corresponding to entity GHG emissions | |
+gas | string |  | |
+value | numeric |  ||
+unit | string |  | |
+
+- **Table: emissions**
+- **Table: geo.ref**
+- **Table: gas.ref**
+- **Table: sectors.ref**
+- **Table: scopes.ref**
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 # create dataset
@@ -958,21 +982,8 @@ wri_UNFCCC_data_OGS_fr %>%
          xaxis = list(title = "Years"))
 ```
 
-## CITEPA
 
-Created in 1961, [CITEPA (Technical Reference for Air Pollution and Climate Change)](https://www.citepa.org/en/about/) quantifies, identifies, expertises and reports atmospheric emissions data, explanatory variables and efficiency indicators, as well as methods for monitoring, quantifying, projecting and modeling emissions, policies and measures of mitigation and adaptation.
 
-As a non-profit organisation and State operator for the French Environment Ministry, the Citepea meets reporting requirements for air pollutants and greenhouse gas emissions from France in different inventory formats, such as UNFCCC, EMEP, and Kyoto Protocol.
-
----
-
-**Data:**
-
-Citepa officially estimates greenhouse gas and air polluant emissions each year on behalf of the Ministry of the Environment. his inventory is carried out as part of France’s international commitments, mainly under the United Nations Framework Convention on Climate Change (as well as the Kyoto Protocol and the Paris Agreement) for greenhouse gases, and the United Nations Economic Commission for Europe for pollutants (LRTAP Convention).
-
-All produced data and official reports can be download [from this page](https://www.citepa.org/fr/telechargements/).
-
-https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/
 
 
 ## Data sources compilation
@@ -1035,15 +1046,12 @@ ADEME provides in [this article](https://www.bilans-ges.ademe.fr/en/accueil/cont
 
 ### Data exploration
 
-The Ministry in charge of the Environment has entrusted the Interprofessional Technical Center for Atmospheric Pollution Studies (CITEPA) with a mission of "territorialization" or a "spatialization" of the national GHG inventory. The spatial resolution is the municipality level, and then aggeregated by EPCI. It is established from botha breakdown of national GHG emissions at municipal level and already spatialized information.
 
 This spatialized inventory is intended to give relevant orders of magnitude for the year of 2016. It does not as accurate and precise as the inventory work carried out at a regional level by the approaved associations for monitoring air quality ([Atmo France](https://atmo-france.org/)), regional energy agencies ([RARE](https://rare.fr/)), or national work with high spatial and temporal resolutions such as [National Spatial Inventory](http://emissions-air.developpement-durable.gouv.fr/).
 
 The dataset proposed here integrates the effects of all greenhouse gases, detailing emissions by municipality and by sector. If the data are dissiminated to the municipality, they are only representative at a scale aggregated to the EPCI.
 
-This datasets can be downloaded through:
-- [ADEME Open Data Portal](https://data.ademe.fr/datasets/igt-pouvoir-de-rechauffement-global)
-- [Datagouv Open Data Portal](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/)
+
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 citepa_IGT = read.csv(file ="https://raw.githubusercontent.com/OpenGeoScales/CarbonData/main/datasets/raw/citepa/igt/IGT%20-%20Pouvoir%20de%20r%C3%A9chauffement%20global-full.csv",
