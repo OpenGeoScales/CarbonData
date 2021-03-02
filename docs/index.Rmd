@@ -1,7 +1,7 @@
 ---
 title: "Carbon Data Analysis"
 author: "Saif Shabou"
-date: "24/02/2021"
+date: "01/03/2021"
 output: 
   html_document:
     toc: true
@@ -31,35 +31,35 @@ library(RColorBrewer)
 
 ### Definition
 
-- Greenhouse gases constitute a group of gases contributing to global warming and climate change.
-- Greenhouse gases are gases that trap heat in the atmosphere. 
-- Without greenhouse gases, the average temperature of Earth’s surface would be about -18° rather than the present average of 15°.
-- Atmospheric concentrations are determined by the balance between sources (emissions of the gas from human activities and natural systems) and sinks (the removal of the gas from the atmosphere by conversion to a different chemical compound or absorption by bodies of water).
 
-### List
+Greenhouse gases constitute a group of gases that absorb infrared radiation from the Earth's surface and trap heat in the atmosphere contributing hence to global warming and climate change. Without greenhouse gases, the average temperature of Earth’s surface would be about -18° rather than the present average of 15°. Atmospheric concentrations are determined by the balance between sources (emissions of the gas from human activities and natural systems) and sinks (the removal of the gas from the atmosphere by conversion to a different chemical compound or absorption by bodies of water).
 
-The primary greenhouse gases in Earth’s atmosphere are water vapor (H2O), carbon dioxide (CO2), methane (CH4), nitrous oxide (N2O) and ozone (O3).
+The main gereenhouse gases are:
 
--**Carbon dioxide (CO2):**
+- **Water vapour (H2O):**
 
-  - Carbon dioxide enters the atmosphere through burning fossil fuels (coal, natural gas, and oil), solid waste, trees and other biological materials, and also as a result of certain chemical reactions (e.g., manufacture of cement).
-  - Carbon dioxide is removed from the atmosphere (or “sequesterd”) when it is absorbed by plants as part of the biological carbon cycle.
+- **Carbon dioxide (CO2):**
 
--**Methane (CH4):**
+Carbon dioxide enters the atmosphere through burning fossil fuels (coal, natural gas, and oil), solid waste, trees and other biological materials, and also as a result of certain chemical reactions (e.g., manufacture of cement).
 
-  - Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices.
+- **Methane (CH4):**
+
+Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices.
   
--**Nitrous oxide (N2O):**
+- **Nitrous oxide (N2O):**
 
-  - Nitrous oxide is emitted during agricultural and industrial activities, combustion of fossil fuels and solid waste, as well as during treatment of wastewater.
+Nitrous oxide is emitted during agricultural and industrial activities, combustion of fossil fuels and solid waste, as well as during treatment of wastewater.
 
--**Fluorinated gases:**
+- **Ozone (O3):**
 
-  - Hydrofluocarbons, perfluocarbons, sulfur hexafluoride, and nitrogen trfluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in sammer quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase
+- **Fluorinated gases:**
+
+Hydrofluocarbons, perfluocarbons, sulfur hexafluoride, and nitrogen trfluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in sammer quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase.
   
 ### Sources
 
-- The vast majority of anthropogenic carbon dioxide emissions come from combustion of fossil fuels, principally coal, oil and natural gas, with additional contributions coming from deforestation and other changes in land use.
+Anthropogenic GHG refer to emissions caused by human activity. Water vapour (H2O) and ozone (O3) are not included in the scope of GHG accounting since their emission is not directly influenced by human activity. 
+The vast majority of anthropogenic GHG emission come from combustion of fossil fuels, principally coal, oil and natural gas, with additional contributions coming from deforestation and other changes in land use. Carbon dioxide (CO2) is considered as the anthropogenic GHG with strongest impact on the climate.
 
 ### Global Warming Potential
 
@@ -76,19 +76,18 @@ The Global Warming Potential was developed to allow comparisons of the global wa
 - Fluorinated gases are high-GWP gases because, for a given amount of mass, they trap substantially more than CO2. The GWPs for these gases can be in the thousands or tens of thousands.
 
 
-
 ## GHG inventory and assessment
 
-A GHG assessment is an evaluation of the quantity of emitted (or captured and stored) GHGs in the atmosphere over one year resulting from the activities of an organization or a territory.
+A GHG assessment is an evaluation of the quantity of emitted (or captured and stored) GHGs in the atmosphere over one year resulting from the activities of an organization or a territory. This assessment is based on methodologies that quantify the flows of greenhouse gases generated by an entity, and characterize their impact by means of an indicator, usually the global warming potential coefficient (GWP).
 
 ### Methodology
 
-The methodological princiles vary considerably depending on the type of assessment that is carried out.
+The methodological principles vary considerably depending on the type of assessment that is carried out.
 
 - GHG organizational reporting (companies, collectivities, public establishments)
 - GHG reporting for territories
 
-The Chapter 8 of the IPCC report provides framewsork and guidance for reporting complete, consistent and transparent national greeenhouse gas inventories, regardless the method used to produce the data.
+The Chapter 8 of the IPCC report provides framework and guidance for reporting complete, consistent and transparent national greeenhouse gas inventories, regardless the method used to produce the data.
 
 - [Link to the IPCC reporting guideline](https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/1_Volume1/V1_8_Ch8_Reporting_Guidance.pdf)
 - [2006 IPCC guidelines for National Greenhouse Gas INventories](https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol1.html)
@@ -121,19 +120,19 @@ These sectors are divided into several sub-categories with specific codes that c
 
 ### Scopes
 
-[The Greenhouse Protocol](https://ghgprotocol.org/about-us) provides accounting and reporting standards, sector guidance, calculation tools, and training for businesses and governement. It establishs a comprenhensive, global, standardized framework for measuring and managing emissions from private and public sector operations. The Greenhouse gas Protocol divides emissions into 3 scopes:
+According to GHG emissions protocols and standards (e.g., GHG protocol, Bilan Carbone... ), emissions might be divided into 3 scopes:
 
 - **Scope 1: Direct GHG emissions**
 
-Scope 1 covers all direct GHG emissions by a company. It includes fuel combustion, company and fugitive emissions.
+Scope 1 covers all direct GHG emissions physically produced by an activity. It includes fuel combustion, process emissions and fugitive emissions. These direct emissions are used to compute national inventories like those defined under the United Nations Framework Convention on Climate Change (UNFCCC).
 
-- **Scope 2: Electricity indirect GHG emissions**
+- **Scope 2: Indirect GHG emissions**
 
-Scope 2 covers indirect GHG emissions from consumption of purchased electricity, heat or steam.
+Scope 2 covers indirect GHG emissions from consumption of purchased electricity, heat or steam. It refers to consumption of a final energy for which emissions occur at the energy production site and not at the place of consumption. 
 
-- **Scope 1: Other indirect GHG emissions**
+- **Scope 3: Other indirect GHG emissions**
 
-Scope 3 covers other indirect emissions, such as the extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. transmission and distribution (T&D) losses) not covered in Scope 2, outsourced activities, waste disposal, etc. Scope 3 emissions (also known as value chain emissions) often represent the largest source of greenhouse gas emissions and in some cases can account for up to 90% of the total carbon impact.
+Scope 3 covers other indirect emissions produced from sources outside of the organizational boundaries of the reporting entity but are necessary for its activity. For example: extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. transmission and distribution (T&D) losses) not covered in Scope 2, outsourced activities, waste disposal, etc. Scope 3 emissions (also known as value chain emissions) often represent the largest source of greenhouse gas emissions and in some cases can account for up to 90% of the total carbon impact.
 
 ### Frameworks
 #### Bilan carbone
@@ -159,7 +158,7 @@ Since July 2014, a method dedicated to Territories has been made available: the 
   - https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Kyoto_Protocol
 - [Paris Agreement](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-d&chapter=27&clang=_en)
 - Carbon Pricing
-- Carbon footptint
+- Carbon footprint
 
 ### Carbon Budget
 
@@ -169,41 +168,51 @@ Since July 2014, a method dedicated to Territories has been made available: the 
 
 - Emissions budgets are relevant to climate change mitigation because they indicate a finite amount of carbon dioxide that can be emitted over time, before resulting in dangerous levels of global warming.
 
-# Data cartography
+# Data sources cartography
 
-## Data providers & producers
+## Data sources
+
+Several organizations provide and share data related to GHG emissions on various scales and based on different frameworks. This section aims at describing main ghg data providers in international and European scale. Concerning the national and sub-national scale, we will focus essentiallt on French GHG emissions data.
+
+Data provider | Description | Geoscale | Data sources | Access |
+---|---------|---|---| ---| 
+The World Bank | The World Bank Group publishes various indicators on world development through its [open data platform](https://data.worldbank.org/). Provided aggregated [GHG emissions data](https://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE) is based on the Emission Database for Global Atmospheric Research (EDGAR)   | `World scale` <br /> `Country scale` | Emission Database for Global Atmospheric Research (EDGAR)| [Get data](https://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE) | 
+The World Resources Institute (WRI) | The World Resources Institute compiles various sources of GHG emissions and provide access to this data through a specific tool: [CLIMAT WATCH](https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=cait&historical-emissions-gases=&historical-emissions-regions=&historical-emissions-sectors=&page=1). Provided [GHG emissions data](https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=cait&historical-emissions-gases=&historical-emissions-regions=&historical-emissions-sectors=&page=1) is based on various data sources: CAIT database, UNFCCC, PIK.  | `World scale` <br /> `Country scale`|  `CAIT` `UNFCCC` `PIK`  | [Get data](https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=cait&historical-emissions-gases=&historical-emissions-regions=&historical-emissions-sectors=&page=1) |
+The United Nations Framework Convention on Climate Change (UNFCCC) | The UNFCCC compiles and shares national annual greenhouse gases inventories submitted in accordance with with the reporting requirements adopted under the Climate Change Convention | `World scale` <br />  `Country scale`| National greenhouse gas (GHG) inventories | [Get data](https://di.unfccc.int/time_series) |
+Potsdam Institute for Climate Impact Research (PIK) | The Postdam Institute provides the **PRIMAP-hist dataset**, which combines several published datasets to create a comprehensive set of greenhouse gas emission pathways for every country and Kyoto gas covering the years 1850 to 2017, and all UNFCCC (United Nations Framework Convention on Climate Change) member states, as well as most non-UNFCCC territories.| `World scale` <br /> `Country scale`| `UNFCCC` `EDGAR`  |[Get data](https://dataservices.gfz-potsdam.de/pik/showshort.php?id=escidoc:4736895) |
+The Joint Research Center of Euorpean Commission | The Joint Research center produces the Emission Database for Global Atmospheric Research (EDGAR). EDGARv5.0 provides emissions of the three main greenhouse gases (CO2, CH4 and N2O) per sector and country.  | `World scale`  `Country scale`|  | [Get data](https://edgar.jrc.ec.europa.eu/overview.php?v=50_GHG) |
+The Organization for Economic Co-Operation and Development (OECD) | The OECD publishes datasets presenting trends in man-made emissions of major greenhouse gases and emissions by gas. | `OECD scale` <br /> `Country scale`|`UNFCCC`|   [Get data](https://stats.oecd.org/Index.aspx?DataSetCode=AIR_GHG) |
+European Environmental Agency (EEA) | The EEA compiles and provides data on greenhouse gas emissions and removals, sent by countries to UNFCCC and the EU Greenhouse Gas Monitoring Mechanism (EU Member States).| `Europe scale` <br /> `Country scale`| `UNFCCC`| [Get data](https://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-16) |
+Eurostat | | `Europe scale` <br /> `Country scale`| `EEA`|  |
+Our World In Data | Our WOrld In Data compile, maintain and shares CO2 and GHG emissions data. It is updated regularly and includes data on CO2 emissions (annual, per capita, cumulative and consumption-based), other greenhouse gases, energy mix, and other relevant metrics. | `World scale` <br /> `Country scale`| `Global Carbon Project` <br /> `CAIT` |[Get data](https://github.com/owid/co2-data) |
+Global Carbon Project (GCP) | GCP is a global research project that seeks to quantify global greenhouse gas emissions and their causes. It provides data on carbon fluxes resulting from human activities and natural processes and a platform to explore and visualize the most up-to-date data ([Gloabl carbon Atlas](http://www.globalcarbonatlas.org/en/content/welcome-carbon-atlas)) | `World scale`<br />`Country scale`<br /> `City scale`|  |[Get data](https://www.globalcarbonproject.org/carbonbudget/20/data.htm) |
+Agence De l'Environnement Etde la Maitrise de l'Energie (ADEME) | In France, ADEME provides GHG accounting framework, called Bilan Carbone, for collecting and compiling emissions inventories from organizations and territories. | `City scale`| `ADEME` | [Get data](https://www.data.gouv.fr/fr/datasets/bilans-demissions-de-ges-publies-sur-le-site-de-lademe-1/)|
+CITEPA (Technical Reference for Air Pollution and Climate Change)  | Citepa officially estimates greenhouse gas and air polluant emissions each year on behalf of the French Ministry of the Environment. | `Country scale`<br /> `City scale`| `Citepa` | [Get data](https://www.citepa.org/fr/telechargements/)
+Carbon Disclosure Project (CDP) | The CDP is an international non-profit organisation that helps companies and cities disclose their environmental impact and GHG emissions. CDP provides [an open data protal](https://data.cdp.net/) for exploring companies and city-wide collected data. | `City scale`| `CDP` | [Get data](https://data.cdp.net/browse?category=Emissions)|
+
+## Data providers 
 
 
-### World scale
-#### The world Bank
 
-#### World Resources Institute
+### The World Resources Institute
 
-- **CAIT - Historical Emissions Data**:
+The World Resources Institute (WRI) is a global research non-profit organization promoting environmental sustainability, economic opportunity, and human health and well-being. WRI's activities are focused on seven areas: food, forests, water, energy, cities, climate and ocean. It participates to the definition of Greenhouse Gas Protocol by providing standards, guidance, tools, and trainings for business and government to quantify and manage GHG emissions. 
 
-CAIT Historic allow for easy access, analysis and visualization of the latest available international greenhouse gas emissions data. It includes information for 191 countries and the European Union, 50 U.S. states, 6 gases, multiple economic sectors, and 160 years - carbon dioxide emissions for 1850-2014 and multi-sector greenhouse gas emission for 1990-2014. 
+WRI provides also access to historic GHG data allowing for easy access, analysis and visualization of the latest available international greenhouse gas emissions data. It includes information for 191 countries and the European Union, 50 U.S. states, 6 gases, multiple economic sectors, and 160 years - carbon dioxide emissions for 1850-2014 and multi-sector greenhouse gas emission for 1990-2014. 
 
 More description is available [here](https://www.wri.org/resources/data-sets/cait-historical-emissions-data-countries-us-states-unfccc)
 
 
 
-#### Our World In Data
-
-#### PIK
-
-#### The United Nations Framework Convention on Climate Change (UNFCCC)
+### The United Nations Framework Convention on Climate Change (UNFCCC)
 
 - **History:** 
 
-- The UNFCCC is an international environmental treaty addressing climate change, negotiated by 154 states at tht United Nations Conference on Environment and Development, informally known as the Earth Summit, held in Rio de Janiero in 1992.
-- The Climate Change Convention entered into force on 21 March 1994.
-Adopted in 1992 at the Rio Earth Summit, most members of the Organization for Economic Cooperation and Development (OECD) plus the states of Central and Eastern Europe - known collectively as Annex I countries - are committed to adopting policies and measures aimed at returning their greenhouse-gas emissions to 1990 levels by the year 2000. All Parties develop and submit "national communications" containing inventories of greenhouse gas emissions by source and greenhouse gas removals by sinks.
+The UNFCCC is an international environmental treaty addressing climate change, negotiated by 154 states at the United Nations Conference on Environment and Development, informally known as the Earth Summit, held in Rio de Janiero in 1992.  Adopted in 1992 at the Rio Earth Summit, most members of the Organization for Economic Cooperation and Development (OECD) plus the states of Central and Eastern Europe - known collectively as Annex I countries - are committed to adopting policies and measures aimed at returning their greenhouse-gas emissions to 1990 levels by the year 2000. All Parties develop and submit "national communications" containing inventories of greenhouse gas emissions by source and greenhouse gas removals by sinks.
 
 - **Objectives:**
 
-  - The UNFCCC seeks for the stabilization of greenhouse gas concentrations in the atmosphere at a level that would prevent dangerous anthropogenic human-induced interferences with the earth’s climate system.
-  - Definition guidelines for submitting annual national greenhouse gas emissions inventories
-  - The GHG data displayed on the UNFCC website are data from official submissions of GHG emissions/removals data by countries that are Parties to the Climate Change Convention.
+The UNFCCC seeks for the stabilization of greenhouse gas concentrations in the atmosphere at a level that would prevent dangerous anthropogenic human-induced interferences with the earth’s climate system. It participates in the definition of guidelines for states to submit annual national greenhouse gas emissions inventories and displays collected data through an open data portal.
 
 - **Parties:**
 
@@ -216,14 +225,13 @@ The Convention divides countries into three main groups according to differing [
     - Non-Annex I Parties are mostly developing countries. Certain groups of developing countries are recognized by the Convention as being especially vulnerable to the adverse impacts of climate change, including countries with low-lying coastal areas and those prone to desertification and drought. Others (such as countries that rely heavily on income from fossil fuel production and commerce) feel more vulnerable to the potential economic impacts of climate change response measures.
     
 
-### Europe scale
-#### European Environmental Agency
+### European Environmental Agency
 
-  - The [European Environment Agency (EEA)](https://www.eea.europa.eu/about-us) is an agency of the European Union, whose task is to provide sound, independent information on the environment. The EEA aims to support sustainable development by helping to achieve significant and measurable improvement in Europe's environment, through the provision of timely, targeted, relevant and reliable information to policymaking agents and the public.
+The [European Environment Agency (EEA)](https://www.eea.europa.eu/about-us) is an agency of the European Union, whose task is to provide sound, independent information on the environment. The EEA aims to support sustainable development by helping to achieve significant and measurable improvement in Europe's environment, through the provision of timely, targeted, relevant and reliable information to policymaking agents and the public.
 
-  - The [European environment information and observation network (Eionet)](https://www.eea.europa.eu/about-us/countries-and-eionet) is a partnership network of the EEA and its member and cooperating countries. Through Eionet, the EEA brings together environmental information from individual countries concentrating on the delivery of timely, nationally validated, high-quality data.
+The [European environment information and observation network (Eionet)](https://www.eea.europa.eu/about-us/countries-and-eionet) is a partnership network of the EEA and its member and cooperating countries. Through Eionet, the EEA brings together environmental information from individual countries concentrating on the delivery of timely, nationally validated, high-quality data.
   
-  - https://ec.europa.eu/eurostat/web/climate-change/data
+- https://ec.europa.eu/eurostat/web/climate-change/data
 - https://ec.europa.eu/eurostat/web/climate-change/data/database
 - https://ec.europa.eu/eurostat/databrowser/view/sdg_13_10/default/table?lang=en
 - https://ec.europa.eu/eurostat/databrowser/view/sdg_13_10/default/table?lang=en
@@ -238,33 +246,15 @@ The Convention divides countries into three main groups according to differing [
 - https://edgar.jrc.ec.europa.eu/overview.php?v=temp_profile
 - https://edgar.jrc.ec.europa.eu/overview.php?v=50_GHG
 
-#### Eurostat
 
-### National & sub-national scale (France use case)
 
-#### ADEME
+### ADEME
 
-#### Citepa
+### Citepa
 
-## Datasets
 
-Data provider |Data sets | Geoscale | Data source | 
----|---|---|---|
-The World Bank |GHG emissions indicators | `World scale`  `Country scale`|  | 
-The World Resources Institute - CAIT dataset | | `World scale`  `Country scale`|  |
-The World Resources Institute - UNFCCC dataset | | `World scale`  `Country scale`|  |
-The World Resources Institute - PIK dataset | | `World scale`  `Country scale`|  |
-UNFCCC | | `World scale`  `Country scale`|  |
-PIK | | `World scale`  `Country scale`|  | 
-OECD | | `OECD scale`  `Country scale`|  [OECD.Stat](https://stats.oecd.org/Index.aspx?DataSetCode=AIR_GHG) |
-European Environmental Agency | | `Europe scale`  `Country scale`|  |
-Our World In Data | CO2 emissions data | `World scale`  `Country scale`|  |
-Global Carbon Project | CO2 emissions data | `World scale`;`Country scale`; `City scale`|  |
-ADEME | Carbon footprint | `City scale`|  |
-Citepa | GHG emissions data | `Country scale`; `City scale`|  |
-Carbon Disclosure Project | GHG emissions data | `City scale`|  |
 
-## data modeling
+## Data modeling
 
 We propose a data model for mapping the various data source identified
 
@@ -277,10 +267,11 @@ geo.code.iso2c | string |  |
 geo.code.iso3c | string |  |
 geo.name | string |  |
 year | numeric |  |
+accounting.framework | string |  |
 sector | string |  |
 gas | string |  |
 value | numeric |  |
-unit | string |  
+unit | string |  |
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 # create dataset
@@ -298,13 +289,11 @@ OGS_ghg_emission = data.frame(data.source = as.character(),
 
 ```
 
-# World scale
+# World scale data exploration
 
-## Data sources exploration
+## World Bank 
 
-### World Bank 
-
-#### Data description
+### Data description
 
 The World Bank provides access to several indicators related to GHG emissions. This data is provided through API or by [download](https://data.worldbank.org/indicator/EN.ATM.GHGT.KT.CE). 
 
@@ -339,7 +328,7 @@ ghg_emissions_wb %>%
   scroll_box(width = "100%", height = "400px")
 ```
 
-#### Data mapping
+### Data mapping
 
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
@@ -392,7 +381,7 @@ Worldbank_data_OGS %>%
          xaxis = list(title = "Years"))
 ``` 
 
-### World Resources Institute
+## World Resources Institute
 
 The World Resources Institute compile various sources of GHG emissions and provide access to this data through a specific tool: [CLIMAT WATCH](https://www.climatewatchdata.org/data-explorer/historical-emissions?historical-emissions-data-sources=cait&historical-emissions-gases=&historical-emissions-regions=&historical-emissions-sectors=&page=1). Climate Watch enables the exploration of historical GHG emissions data, downnload and collection via a specified API. 
 
@@ -538,7 +527,7 @@ ghg_emissions_wri %>%
   - *UNFCCC Non-Annex I* data source contains data for **148** countries that are parts of the non-Annex I convention. 
 
 
-#### WRI-CAIT Data description
+### WRI-CAIT Data description
 
 - **Description**: 
 
@@ -580,7 +569,7 @@ ghg_emissions_wri_CAIT %>%
 ```
 
 
-#### WRI-CAIT Data mapping
+### WRI-CAIT Data mapping
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 OGS.MAP.WRI.CAIT = function(wri_data, start_date, end_date, geoscale, datasource.filter, geoname.filter, gas.filter, sector.filter){
@@ -648,15 +637,10 @@ wri_data_OGS %>%
 
 ```
 
-#### WRI - GCP 
 
-#### WRI - UNFCCC 
+## Our world in data
 
-#### WRI - PIK
-
-### Our world in data
-
-#### Data description
+### Data description
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 # read co2 data
@@ -676,7 +660,7 @@ ghg_emissions_owid %>%
 
 ```
 
-#### Data mapping
+### Data mapping
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 OGS.MAP.OWID = function(owid_data, geoscale, geoname.filter){
@@ -722,7 +706,7 @@ owid_data_OGS %>%
          xaxis = list(title = "Years"))
 ```
 
-## Data comparison
+## Data sources compilation
 
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
@@ -752,13 +736,13 @@ OGS_ghg_emission %>%
          xaxis = list(title = "Years"))
 ```
 
-# Country scale: France use case
+## Conclusion
 
-## Data sources
+# Country scale data exploration: France use case
 
-### European Environmental Agency Data 
+## European Environmental Agency Data 
 
-#### Data Exploration
+### Data Exploration
 
 - Data used in this article has been downloaded from here: https://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-16
 
@@ -787,7 +771,7 @@ emissions | Emission value |
 Notation | Notation key |
 PublicationDate | Publication Date |
 
-#### Data Mapping
+### Data Mapping
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 OGS.MAP.EEA = function(eea_data, geoscale, geoname.filter, sector.filter, gas.filter){
@@ -847,7 +831,7 @@ eea_data_OGS_fr %>%
 
 ```
 
-### The World Bank
+## The World Bank
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 Worldbank_data_OGS_fr = OGS.MAP.WB(Worldbank_data = ghg_emissions_wb,
@@ -876,7 +860,7 @@ Worldbank_data_OGS_fr %>%
 
 ```
 
-### The World resources Institute - CAIT
+## The World resources Institute - CAIT
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 wri_CAIT_data_OGS_fr = OGS.MAP.WRI.CAIT(wri_data = ghg_emissions_wri,
@@ -907,7 +891,7 @@ wri_CAIT_data_OGS_fr %>%
          xaxis = list(title = "Years"))
 ```
 
-### The World resources Institute - UNFCCC
+## The World resources Institute - UNFCCC
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 OGS.MAP.WRI.UNFCCC = function(wri_data, start_date, end_date, geoscale,sector.filter,gas.filter,geoname.filter,datasource.filter){
@@ -973,7 +957,7 @@ wri_UNFCCC_data_OGS_fr %>%
          xaxis = list(title = "Years"))
 ```
 
-### CITEPA
+## CITEPA
 
 Created in 1961, [CITEPA (Technical Reference for Air Pollution and Climate Change)](https://www.citepa.org/en/about/) quantifies, identifies, expertises and reports atmospheric emissions data, explanatory variables and efficiency indicators, as well as methods for monitoring, quantifying, projecting and modeling emissions, policies and measures of mitigation and adaptation.
 
@@ -990,7 +974,7 @@ All produced data and official reports can be download [from this page](https://
 https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/
 
 
-## Data compilation
+## Data sources compilation
 
 In this section we will combine the different data sources in order to compare ghg emissions' values
 
@@ -1024,8 +1008,9 @@ OGS_ghg_emission_fr %>%
 
 ```
 
+## Conclusion
 
-# Sub-national scale: France use case
+# City scale data exploration: France use case
 
 ## Introduction
 
@@ -1038,17 +1023,26 @@ Different approaches may be undertaken for assessing carbon footprint of territo
 
 ADEME provides in [this article](https://www.bilans-ges.ademe.fr/en/accueil/contenu/index/page/territory_reporting/siGras/0) a comprehensive comparison of these different approaches for GHG assessment.
 
-## Data sources
 
-### ADEME - BEGES
+## ADEME - BEGES
 
-#### Data exploration
+### Data exploration
 
-#### Data mapping
+### Data mapping
 
-### CITEPA - IGT
+## CITEPA - IGT
 
-#### Data exploration
+### Data exploration
+
+The Ministry in charge of the Environment has entrusted the Interprofessional Technical Center for Atmospheric Pollution Studies (CITEPA) with a mission of "territorialization" or a "spatialization" of the national GHG inventory. The spatial resolution is the municipality level, and then aggeregated by EPCI. It is established from botha breakdown of national GHG emissions at municipal level and already spatialized information.
+
+This spatialized inventory is intended to give relevant orders of magnitude for the year of 2016. It does not as accurate and precise as the inventory work carried out at a regional level by the approaved associations for monitoring air quality ([Atmo France](https://atmo-france.org/)), regional energy agencies ([RARE](https://rare.fr/)), or national work with high spatial and temporal resolutions such as [National Spatial Inventory](http://emissions-air.developpement-durable.gouv.fr/).
+
+The dataset proposed here integrates the effects of all greenhouse gases, detailing emissions by municipality and by sector. If the data are dissiminated to the municipality, they are only representative at a scale aggregated to the EPCI.
+
+This datasets can be downloaded through:
+- [ADEME Open Data Portal](https://data.ademe.fr/datasets/igt-pouvoir-de-rechauffement-global)
+- [Datagouv Open Data Portal](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/)
 
 ```{r warning=FALSE, message=FALSE, echo = TRUE}
 citepa_IGT = read.csv(file ="https://raw.githubusercontent.com/OpenGeoScales/CarbonData/main/datasets/raw/citepa/igt/IGT%20-%20Pouvoir%20de%20r%C3%A9chauffement%20global-full.csv",
@@ -1091,7 +1085,9 @@ leaflet(data = citepa_IGT_OGS, height = 400, width = "100%") %>%
             labFormat = labelFormat(suffix = " "))
 ```
 
-#### Data mapping
+### Data mapping
 
-## Data compilation
+## Data sources compilation
+
+## Conclusion
 
