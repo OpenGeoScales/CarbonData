@@ -25,7 +25,21 @@ library(RColorBrewer)
 
 # Introduction
 
-# Domain knowledge
+Greenhouse gases emissions from human activities are considered as the most significant driver of observed climate change since the mid-20th century (IPCC, 2013). In order to better mitigate climate change impacts, policy makers need relevant and accurate data on GHG emissions at various scales. 
+
+Different protocols and methodologies for quantifying GHG emissions have been developed aiming at allowing organizations (states, municipalities, companies, etc.) to assess their carbon footbrins These standards help in identifying concerned gases, sectors' categorization as well as  formulas to be used to measure the emissions associated with organizations' activities. Self reported inventories are collected, compiled and sorted by multiple organisms of expert in cliamte change and  carbon foorptint. In order to esnsure trabsparency and public knowledge on emission levels, this data is published through various open data platforms. However, GHG emissions data are published in different formats, levels of transformations, aggregates, frequency, scales, languages... This makes their use complex and requires mapping and comparisons of  different sources in order to build a complete corpus that meets users' needs.
+
+The objective of this report is to propose a compilation of data related to GHG emissions in order to harmonize them in a single accessible database.
+
+In the [next section](#section_2) we address main knowledge and concepts related to greenhouse gas emissions in order to better understand the content of emissions data.
+
+In [section 3](#section_3) we present a catalog of the different data sources that we have been able to identify with a description of the collection and measurement methods used and data providers. We propose at the end of the section a target data model to which we try to map raw GHG emissions data.
+
+In sections [4](#section_4), [5](#section_5) and [6](#section_6), we present the results of exploration of raw data collected from previously identified sources at different geographical scales (world, countries, cities) respectively. GHG emission data is mapped with the proposed data modele in section 3 in order to facilitate data sources comparison and assess the accuracy of our model. We will focus in this report on France use case for national and sub-national scale. 
+
+
+
+# Domain knowledge {#section_2}
 
 ## Grennhouse Gases (GHG)
 
@@ -36,15 +50,18 @@ Greenhouse gases constitute a group of gases that absorb infrared radiation from
 
 The main gereenhouse gases are:
 
-- **Water vapour (H2O):**
+- **Water vapour (H2O):** 
+
+Water vapor is the largest contributor to the natural greenhouse effect. Water vapor is fundamentally different from other greenhouse gases in that it can condense and rain out when it reaches high concentrations, and the total amount of water vapor in the atmosphere is in part a function of the Earth’s temperature. While some human activities such as evaporation from irrigated crops or power plant cooling release water vapor into the air, these activities have been determined to have a negligible effect on global climate (IPCC
+2013).
 
 - **Carbon dioxide (CO2):**
 
-Carbon dioxide enters the atmosphere through burning fossil fuels (coal, natural gas, and oil), solid waste, trees and other biological materials, and also as a result of certain chemical reactions (e.g., manufacture of cement).
+The IPCC definitively states that “the increase of CO2 … is caused by anthropogenic emissions from the use of fossil fuel as a source of energy and from land use and land use changes, in particular agriculture” (IPCC 2013). The predominant source of anthropogenic CO2 emissions is the combustion of fossil fuels. Forest clearing, other biomass burning, and some non-energy production processes (e.g., cement production) also emit notable quantities of CO2.
 
 - **Methane (CH4):**
 
-Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices.
+Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices. The IPCC has estimated that slightly more than half of the current CH4 flux to the atmosphere is anthropogenic, from human activities such as agriculture, fossil fuel production and use, and waste disposal (IPCC 2007).
   
 - **Nitrous oxide (N2O):**
 
@@ -52,9 +69,11 @@ Nitrous oxide is emitted during agricultural and industrial activities, combusti
 
 - **Ozone (O3):**
 
+Ozone is present in both the upper stratosphere, where it shields the Earth from harmful levels of ultraviolet radiation, and at lower concentrations in the troposphere, where it is the main component of anthropogenic photochemical “smog.”
+
 - **Fluorinated gases:**
 
-Hydrofluocarbons, perfluocarbons, sulfur hexafluoride, and nitrogen trfluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in sammer quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase.
+Halocarbons, Sulfur Hexafluoride, and Nitrogen Trifluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in sammer quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase.
   
 ### Sources
 
@@ -155,6 +174,7 @@ In October 2011, the GHG Protocol was supplemented by the "Corporate Value Chain
 
 Since July 2014, a method dedicated to Territories has been made available: the Global Protocol for Community-scale GHG emissions.
 
+
 ## Glossary
 
 - **Kyoto protocol** [Kyoto protocol](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-a&chapter=27&clang=_en):
@@ -168,7 +188,7 @@ Since July 2014, a method dedicated to Territories has been made available: the 
 
 - **Carbon Budget:** A carbon budget is an upper limit of total CO2 emissions associated with remaining below a specific global average - temperature. Global emissions budgets are calculated according to historical cumulative emissions from fossil, industrial processes, and land use change, but vary according to the global temperature target that is chosen, the probability of staying below that target, and the emissions of other non CO2 greenhouse gases. Emissions budgets are relevant to climate change mitigation because they indicate a finite amount of carbon dioxide that can be emitted over time, before resulting in dangerous levels of global warming.
 
-# Data sources cartography
+# Data sources cartography {#section_3}
 
 ## Data sources
 
@@ -272,6 +292,7 @@ The Ministry in charge of the Environment has entrusted the Interprofessional Te
 - [Datagouv Open Data Portal](https://www.data.gouv.fr/fr/datasets/inventaire-de-gaz-a-effet-de-serre-territorialise/)
 
 
+
 ## Data modeling
 
 We propose a data model for mapping the various data source identified
@@ -326,7 +347,16 @@ unit | string | Unit used for quantifying GHG emissions | |
 
 ```
 
-# World scale data exploration
+## Data harmonization projects
+
+- Country scale: 
+  - https://www.theshiftdataportal.org/
+  - https://www.climatewatchdata.org/
+  - https://essd.copernicus.org/articles/12/3269/2020/
+- City scale: 
+  - https://www.nature.com/articles/sdata2018280
+
+# World scale data exploration {#section_4}
 
 ## World Bank 
 
@@ -775,7 +805,7 @@ OGS_ghg_emission %>%
 
 ## Conclusion
 
-# Country scale data exploration: France use case
+# Country scale data exploration: France use case {#section_5}
 
 ## European Environmental Agency Data 
 
@@ -1034,7 +1064,7 @@ OGS_ghg_emission_fr %>%
 
 ## Conclusion
 
-# City scale data exploration: France use case
+# City scale data exploration: France use case {#section_6}
 
 ## Introduction
 
@@ -1112,3 +1142,9 @@ leaflet(data = citepa_IGT_OGS, height = 400, width = "100%") %>%
 
 ## Conclusion
 
+
+# Conclusion
+
+# References
+
+- IPCC, 2013. Climate change 2013: The physical science basis. Working Group I contribution to the IPCC Fifth Assessment Report. Cambridge, United Kingdom: Cambridge University Press. www.ipcc.ch/report/ar5/wg1.
