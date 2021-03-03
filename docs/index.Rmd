@@ -1,7 +1,7 @@
 ---
-title: "Carbon Data Analysis"
+title: "Carbon Data Analysis (work in progress!!)"
 author: "Saif Shabou"
-date: "01/03/2021"
+date: "03/03/2021"
 output: 
   html_document:
     toc: true
@@ -134,6 +134,10 @@ Scope 2 covers indirect GHG emissions from consumption of purchased electricity,
 
 Scope 3 covers other indirect emissions produced from sources outside of the organizational boundaries of the reporting entity but are necessary for its activity. For example: extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. transmission and distribution (T&D) losses) not covered in Scope 2, outsourced activities, waste disposal, etc. Scope 3 emissions (also known as value chain emissions) often represent the largest source of greenhouse gas emissions and in some cases can account for up to 90% of the total carbon impact.
 
+```{r scope_emissions, echo=FALSE, fig.cap="Bilan Carbone: emissions' categories (source: [GHG Protocol](https://www.ghgprotocol.org/sites/default/files/ghgp/standards/Scope3_Calculation_Guidance_0.pdf))", out.width = '70%', fig.align="center"}
+knitr::include_graphics("images/scope_emissions.png")
+```
+
 ### Frameworks
 #### Bilan carbone
 
@@ -153,20 +157,16 @@ Since July 2014, a method dedicated to Territories has been made available: the 
 
 ## Glossary
 
-- [UNFCCC convention](https://unfccc.int/process-and-meetings/the-convention/what-is-the-united-nations-framework-convention-on-climate-change)
-- [Kyoto protocol](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-a&chapter=27&clang=_en):
+- **Kyoto protocol** [Kyoto protocol](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-a&chapter=27&clang=_en):
   - https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Kyoto_Protocol
-- [Paris Agreement](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-d&chapter=27&clang=_en)
-- Carbon Pricing
-- Carbon footprint
+  
+- **Paris Agreement**: [Paris Agreement](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-d&chapter=27&clang=_en)
 
-### Carbon Budget
+- **Carbon Pricing**
 
-- A carbon budget is an upper limit of total CO2 emissions associated with remaining below a specific global average - temperature.
+- **Carbon footprint**
 
-- Global emissions budgets are calculated according to historical cumulative emissions from fossil, industrial processes, and land use change, but vary according to the global temperature target that is chosen, the probability of staying below that target, and the emissions of other non CO2 greenhouse gases.
-
-- Emissions budgets are relevant to climate change mitigation because they indicate a finite amount of carbon dioxide that can be emitted over time, before resulting in dangerous levels of global warming.
+- **Carbon Budget:** A carbon budget is an upper limit of total CO2 emissions associated with remaining below a specific global average - temperature. Global emissions budgets are calculated according to historical cumulative emissions from fossil, industrial processes, and land use change, but vary according to the global temperature target that is chosen, the probability of staying below that target, and the emissions of other non CO2 greenhouse gases. Emissions budgets are relevant to climate change mitigation because they indicate a finite amount of carbon dioxide that can be emitted over time, before resulting in dangerous levels of global warming.
 
 # Data sources cartography
 
@@ -285,32 +285,44 @@ geo.scale | string | Category of geo-spatial scale and geographical boundary con
 geo.code.iso2c | string | Countries ISO 3166-1 alpha-2 codes | [List of alpha-2 ISO codes](https://www.iso.org/iso-3166-country-codes.html)|
 geo.code.iso3c | string | ISO 3166-1 alpha-3 codes | [List of alpha-3 ISO codes](https://www.iso.org/iso-3166-country-codes.html)|
 geo.name | string | ISO 3166-1 english country name | [List of english ISO country names](https://www.iso.org/iso-3166-country-codes.html) |
-year | numeric |  ||
-sector | date | Years corresponding to entity GHG emissions | |
-scope | date | Years corresponding to entity GHG emissions | |
-gas | string |  | |
-value | numeric |  ||
-unit | string |  | |
+year | date | Year of the corresponding GHG emission ||
+sector | string | Activity sectors: "Total excluding LUCF", "Total including LUCF", "Energy", "Industrial Processes", "Agriculture", "Waste", "Land-Use Change and Forestry", "Bunker Fuels"  | |
+scope | string | Scope number vorresponding to the emission data |`Scope 1` `Scope 2` <br /> `Scope 3` |
+gas | string | Name of quantified gas emissions | `All GHG` `CO22` <br /> `CH4` `N2O` <br /> `F-Gas` |
+value | numeric | QUantity of considered gas emission by sector and scope. ||
+unit | string | Unit used for quantifying GHG emissions | |
 
-- **Table: emissions**
-- **Table: geo.ref**
-- **Table: gas.ref**
-- **Table: sectors.ref**
-- **Table: scopes.ref**
 
-```{r warning=FALSE, message=FALSE, echo = TRUE}
-# create dataset
-OGS_ghg_emission = data.frame(data.source = as.character(),
-                              data.provider = as.character(),
-                              geo.scale = as.character(),
-                              geo.code.iso2c = as.character(),
-                              geo.code.iso3c = as.character(),
-                              geo.name = as.character(),
-                              year = as.numeric(),
-                              sector = as.character(),
-                              gas = as.character(),
-                              value = as.numeric(),
-                              unit = as.character())
+
+```{json echo=TRUE, message=FALSE, warning=FALSE}
+{
+    "data_provider": {
+        "name": "EEA"
+	},
+	"data_source": {
+        "name": "EEA",
+	},
+	"geo": {
+        "name": "France",
+		"scale": "Country",,
+		"code_iso_2": "FR",
+		"code_iso_3": "FRA"
+	},
+	"time": {
+		"scale": "Year",
+		"value": 2018
+	},
+	"emission": {
+		"gas": ["CO2", "CH4", "NO2", "F-gas"],
+		"value": 540,
+		"unit": "MtCO2",
+		"accounting_framework": "UNFCCC",
+		"sector_name": "All",
+		"Scope_name" : "Scope 1",
+		"scopes":
+
+    }
+}
 
 ```
 
