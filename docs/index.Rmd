@@ -122,10 +122,18 @@ In addition to satellite data, ground based carbon monitoring remains indispensa
 - Copernicus CO2 Monitoring Task Force
 - Integrated carbon Observation System
 
-```{r ghg_emission_methods, echo=FALSE, fig.cap="Generalised schematic illustrating the combination of top-down information from atmospheric concentration measurements (including atmospherci monitoring stations and satellite) and bottom-up minformation on amissions which are used as first estimate ([source](https://ec.europa.eu/jrc/en/publication/eur-scientific-and-technical-research-reports/atmospheric-monitoring-and-inverse-modelling-verification-greenhouse-gas-inventories))", out.width = '40%', fig.align="center"}
+```{r ghg_emission_methods, echo=FALSE, fig.cap="Generalised schematic illustrating the combination of top-down information from atmospheric concentration measurements (including atmospherci monitoring stations and satellite) and bottom-up minformation on amissions which are used as first estimate ([source](https://ec.europa.eu/jrc/en/publication/eur-scientific-and-technical-research-reports/atmospheric-monitoring-and-inverse-modelling-verification-greenhouse-gas-inventories))", out.width = '50%', fig.align="center"}
 knitr::include_graphics("images/GHG_topdown_bottomup_methods.png")
 ```
 
+
+- **Greenhouse gas monitoring**
+
+Greenhouse gas monitoring is the direct measurement of greenhouse gas emissions and levels. GHGs are measured from space such as by Orbiting Carbon Observatory and by the mean of networks of ground stations such as the Integreated Carbon Observation System.
+
+- **Space-based measurements of GHG emissions**
+
+Space-based measurements of carbon dioxide (CO2) are used to help understanding Earht's carbon cycle. There are two high-precision CO2 observing satellites: GOSAT and OCO-2.
 
 ## Bottom-Up: GHG inventory and assessment
 
@@ -247,6 +255,8 @@ Carbon Disclosure Project (CDP) | The CDP is an international non-profit organis
 
 ### French scale
 
+Data provider | Description | Geoscale | Data sources | Access |
+---|---------|---|---| ---| 
 Agence De l'Environnement Et de la Maitrise de l'Energie (ADEME) | In France, ADEME provides GHG accounting framework, called Bilan Carbone, for collecting and compiling emissions inventories from organizations and territories. | `City scale`| `ADEME` | [Get data](https://www.data.gouv.fr/fr/datasets/bilans-demissions-de-ges-publies-sur-le-site-de-lademe-1/)|
 Technical Reference for Air Pollution and Climate Change (CITEPA) | Citepa officially estimates greenhouse gas and air polluant emissions each year on behalf of the French Ministry of the Environment. | `Country scale`<br /> `City scale`| `Citepa` | [Get data](https://www.citepa.org/fr/telechargements/) |
  Atmo France: Fédération des Associations Agréées de Surveillance de la Qualité de l'Air (AASQA) | Atmo France is a federation of regional approved supervisory assoiciations of air quality in France. It provides an [Air QUality Open Data Portal](https://atmo-france.org/les-donnees/) including: air polluants stations measurements, emissions, air quality indicators... Data is provided in multiple temporal scales, ranging from hourly to annual data and with historical depth of 5 years. | `Region scale`<br /> `City scale`| `AASQA` | [Get data](https://atmo-france.org/les-donnees/) |
