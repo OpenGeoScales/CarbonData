@@ -1,7 +1,7 @@
 ---
 title: "Carbon Data Analysis (work in progress!!)"
 author: "Saif Shabou"
-date: "03/03/2021"
+date: "15/03/2021"
 output: 
   html_document:
     toc: true
@@ -25,9 +25,9 @@ library(RColorBrewer)
 
 # Introduction
 
-Greenhouse gases emissions from human activities are considered as the most significant driver of observed climate change since the mid-20th century (IPCC, 2013). In order to better mitigate climate change impacts, policy makers need relevant and accurate data on GHG emissions at various scales. 
+Greenhouse gases (GHGs) emissions from human activities are considered as the most significant driver of observed climate change since the mid-20th century (IPCC, 2013). In order to better mitigate climate change impacts, policy makers need relevant and accurate data on GHG emissions at various scales. 
 
-Different protocols and methodologies for quantifying GHG emissions have been developed aiming at allowing organizations (states, municipalities, companies, etc.) to assess their carbon footbrins These standards help in identifying concerned gases, sectors' categorization as well as  formulas to be used to measure the emissions associated with organizations' activities. Self reported inventories are collected, compiled and sorted by multiple organisms of expert in cliamte change and  carbon foorptint. In order to esnsure trabsparency and public knowledge on emission levels, this data is published through various open data platforms. However, GHG emissions data are published in different formats, levels of transformations, aggregates, frequency, scales, languages... This makes their use complex and requires mapping and comparisons of  different sources in order to build a complete corpus that meets users' needs.
+Different protocols and methodologies for quantifying GHGs emissions have been developed aiming at allowing organizations (states, municipalities, companies, etc.) to assess their carbon footprins These standards help in identifying concerned gases, sectors' categorization as well as  methodologies to be used to measure the emissions associated with organizations' activities. Self reported inventories are collected, compiled and sorted by multiple organisms of experts in climate change and  carbon analytics. In order to esnsure transparency and public knowledge on emission levels, this data is published through various open data platforms. However, GHG emissions data are published in different formats, levels of transformations, aggregates, frequencies, scales, languages... This makes their use complex and requires mapping and comparison of  different sources in order to build a complete corpus that meets users' needs.
 
 The objective of this report is to propose a compilation of data related to GHG emissions in order to harmonize them in a single accessible database.
 
@@ -35,7 +35,7 @@ In the [next section](#section_2) we address main knowledge and concepts related
 
 In [section 3](#section_3) we present a catalog of the different data sources that we have been able to identify with a description of the collection and measurement methods used and data providers. We propose at the end of the section a target data model to which we try to map raw GHG emissions data.
 
-In sections [4](#section_4), [5](#section_5) and [6](#section_6), we present the results of exploration of raw data collected from previously identified sources at different geographical scales (world, countries, cities) respectively. GHG emission data is mapped with the proposed data modele in section 3 in order to facilitate data sources comparison and assess the accuracy of our model. We will focus in this report on France use case for national and sub-national scale. 
+In sections [4](#section_4), [5](#section_5) and [6](#section_6), we present the results of exploration of raw data collected from previously identified sources at different geographical scales (world, countries, cities) respectively. GHG emission data is mapped with the proposed data model in section 3 in order to facilitate data sources comparison and assess the accuracy of our model. We will focus in this report on France use case for national and sub-national scale. 
 
 
 
@@ -57,11 +57,11 @@ Water vapor is the largest contributor to the natural greenhouse effect. Water v
 
 - **Carbon dioxide (CO2):**
 
-The IPCC definitively states that “the increase of CO2 … is caused by anthropogenic emissions from the use of fossil fuel as a source of energy and from land use and land use changes, in particular agriculture” (IPCC 2013). The predominant source of anthropogenic CO2 emissions is the combustion of fossil fuels. Forest clearing, other biomass burning, and some non-energy production processes (e.g., cement production) also emit notable quantities of CO2.
+The IPCC definitively states that *“the increase of CO2 … is caused by anthropogenic emissions from the use of fossil fuel as a source of energy and from land use and land use changes, in particular agriculture”* (IPCC, 2013). The predominant source of anthropogenic CO2 emissions is the combustion of fossil fuels. Forest clearing, other biomass burning, and some non-energy production processes (e.g., cement production) also emit considerable quantities of CO2.
 
 - **Methane (CH4):**
 
-Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices. The IPCC has estimated that slightly more than half of the current CH4 flux to the atmosphere is anthropogenic, from human activities such as agriculture, fossil fuel production and use, and waste disposal (IPCC 2007).
+Methane is emitted during the production and transport of coal, natural gas, and oil. Methane emissions also result from livestock and other agricultural practices. The IPCC has estimated that slightly more than half of the current CH4 flux to the atmosphere is anthropogenic, from human activities such as agriculture, fossil fuel production and use, and waste disposal *(IPCC, 2007)*.
   
 - **Nitrous oxide (N2O):**
 
@@ -73,7 +73,7 @@ Ozone is present in both the upper stratosphere, where it shields the Earth from
 
 - **Fluorinated gases:**
 
-Halocarbons, Sulfur Hexafluoride, and Nitrogen Trifluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in sammer quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase.
+Halocarbons, Sulfur Hexafluoride, and Nitrogen Trifluoride are synthetic, powerful greenhouse gases that are emitted from a variety of industrial processes. These gases are typically emitted in small quantities, but because they are potent greenhouse gases, they are sometimes referred to as high Global Warming Potential gase.
   
 ### Sources
 
@@ -84,17 +84,22 @@ The vast majority of anthropogenic GHG emission come from combustion of fossil f
 
 GHGs warm the earth by absorbing energy and slowing the rate at which the energy escapes to space. Different GHGs can have different effects on the earth’s warming depending on their ability to absorb energy (radiative efficiency) and how long they stay in the atmosphere (lifetime).
 
-The Global Warming Potential was developed to allow comparisons of the global warming impacts of different gases. It is a measure of how much energy the emission of 1 ton of a gas will absorb over a given period of time, relative to the emissions of 1 ton of carbon dioxide. The larger the GWP, the more that given gas warms the earth compared to CO2 over that time period (usually 100 years). GWP provides a common unit of measure which allows analysts to add up emissions estimates of different gases (e.g., to compile a national GHG inventory), and allows policymakers to compare emissions reduction opportunities across sectors. 
+The Global Warming Potential (GWP) was developed to allow comparisons of the global warming impacts of different gases. It is a measure of how much energy the emission of 1 Ton of a gas will absorb over a given period of time, relative to the emissions of 1 Ton of carbon dioxide. The larger the GWP, the more that given gas warms the earth compared to CO2 over that time period (usually 100 years). GWP provides a common unit of measure which allows analysts to add up emissions estimates of different gases (e.g., to compile a national GHG inventory), and allows policymakers to compare emissions reduction opportunities across sectors. 
 
 - CO2, by definition, has a GWP of 1 regardless of the time period used since it is the gas used as the reference. CO2 emissions cause an increase in the atmospheric concentrations that will least thousands of years.
 
-- Methane (CH4) is estimated to have a GWP of 28-36 over 100 years. CH4 emitted today lasts about a decade on average, which is much less time thanCO2. But CH4 absorbs much more energy than CO2.
+- Methane (CH4) is estimated to have a GWP of 28-36 over 100 years. CH4 emitted today lasts about a decade on average, which is much less time than CO2. But CH4 absorbs much more energy than CO2.
 
-- Nitrous Oxide (N2O) has a GWP 265-298 times that of CO2 for a 100-year timescale. BO2 emitted today remains in the atmosphere for more than 100 years, on average.
+- Nitrous Oxide (N2O) has a GWP 265-298 times that of CO2 for a 100-year timescale. N2O emitted today remains in the atmosphere for more than 100 years, on average.
 
 - Fluorinated gases are high-GWP gases because, for a given amount of mass, they trap substantially more than CO2. The GWPs for these gases can be in the thousands or tens of thousands.
 
 
+
+
+### Carbon cycle
+
+The carbon cycle describes the movement of carbon as is recycled and reused throught the biosphere, as well as long-term processes of carbon sequestration and release from carbon sinks. The carbon cycle is usually divided into the five main interconnected reservoirs of carbon: the atmosphere, the terrestrial biosphere, the ocean, sediments (including fossil fuels, freshwater systems and non-living organic material) and the earth's interior. 
 
 ## Methods for estimating GHG emissions
 
@@ -116,9 +121,16 @@ However, the accuracy of emissions' estimations derived from inverse modeling, a
 CO2 monitoring from space can provide important additional information and identify CO2 hotpots. For instance, [Nassar et al.,](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017GL074702) used [Orbiting Carbon Observatory 2 (OCO-2)](https://www.nasa.gov/mission_pages/oco2/index.html) satellite retrievals to quantify, CO2 emissions from large point sources in close agreement with reported daily emission values. This study suggests that future CO2 imaging satellites, optimised for
 point sources, could monitor emissions from individual power plants, which will be important for areas that lack detailed emission information. Recent improvements in satellite retrievals are encouraging and various studies investigate the potential to use satellite data to quantify CO2 emissions from large cities and point sources.
 
-In addition to satellite data, ground based carbon monitoring remains indispensable and will require a significant expansion of surface monitoring stations, such as the "Integrated carbon Observation System" (ICOS) network over Europe, and national and international networks, including "Total Carbon Column Observing Network" (TCCON) for validating satellite data. Furthermore, measurement programmes closer to emission sources, which can quantify emissions at facility scale, should be further expanded. Such facility scale measurements can provide more representative emission factors and allow to directly improve emission inventories.
+In addition to satellite data, ground based carbon monitoring remains indispensable and will require a significant expansion of surface monitoring stations, such as the "Integrated carbon Observation System" (ICOS) network over Europe, and national and international networks, including "Total Carbon Column Observing Network" (TCCON) for validating satellite data. Furthermore, measurement programs closer to emission sources, which can quantify emissions at facility scale, should be further expanded. Such facility scale measurements can provide more representative emission factors and allow to directly improve emission inventories.
 
-- Orbiting Carbon Observatory 2
+- **How we measure CO2 concentrations in the atmosphere?**
+The measured quantity of CO2 by measurement stations is described by the chemical term "mole fraction", defined as the number of carbon dioxide molecules in a given number of molecules of aire, after removal of water vapor. For example, 413 parts per million of CO2 (abbrieved as ppm) means that in every million molecules of (dry) air there are on average 413 CO2 molecules. More details of CO2 measurement methods are available [in this document provided by Global Monitoring Laboratory](https://www.esrl.noaa.gov/gmd/ccgg/about/co2_measurements.html).
+
+- **Orbiting Carbon Observatory 2 (OCO-2)**: [OCO-2](https://ocov2.jpl.nasa.gov/) is a CO2 observing satellite used to study carbon dioxide concentrations and distributions in the atmosphere. The OCO-2 project objectives are to collect the space-based measurements needed to quantify variations in the column averaged atmospheric dioxide (CO2) dry air mole fraction, with the precision, resolution, and coverage needed toi improve our understanding of surface CO2 sources and sinks on regional scales (> 1000km). The entire OCO-2 data records can be obtained from [the Nasa earth data portal](https://disc.gsfc.nasa.gov/datasets?keywords=OCO-2%20v10r&page=1).
+
+- **The Total Carbon Column Observing Network (TCCON)**: [TCCON](http://www.tccon.caltech.edu/) is a network of ground-based Fourier Transform Spectrometers recording direct solar spectra in the near-infrared spectral region. From these spectra, accurate and precise column-averaged abundance of CO2, CH4, N2O, HF, CO, H2O, and HDO are retrieved.
+
+- **The Global Greenhouse Gas Reference Network**: The Global Greenhouse Gas Reference Network measures the atmospheric distribution and trends of the three main long-term drivers of climate change, carbon dioxide (CO2), methane (CH4), and nitrous oxide (N2O), as well as carbon monoxide (CO) which is an important indicator of air pollution. The Reference Network is a part of NOAA's Global Monitoring Laboratory in Boulder, Colorado. The carefully calibrated and documented measurements data are provided freely through [the Global Monitoring Laboratory data portal](https://www.esrl.noaa.gov/gmd/dv/data/?category=Greenhouse%2BGases).
 - Copernicus CO2 Monitoring Task Force
 - Integrated carbon Observation System
 
@@ -130,6 +142,9 @@ knitr::include_graphics("images/GHG_topdown_bottomup_methods.png")
 - **Greenhouse gas monitoring**
 
 Greenhouse gas monitoring is the direct measurement of greenhouse gas emissions and levels. GHGs are measured from space such as by Orbiting Carbon Observatory and by the mean of networks of ground stations such as the Integreated Carbon Observation System.
+GHGs monitoring refers to tracking how much GHGs is produced by particular activity at a particular point in time.
+
+NASA CArbon Monitoring System (CMS) is a climate research program that provides grants for climate research that measure carbon dioxide and methane emissions. Using instruments in satellites and ariplanes CMS funded research projects provide data to the United States and other countries that help track progress of individual nations regarding their emissions.
 
 - **Space-based measurements of GHG emissions**
 
@@ -215,6 +230,10 @@ In October 2011, the GHG Protocol was supplemented by the "Corporate Value Chain
 Since July 2014, a method dedicated to Territories has been made available: the Global Protocol for Community-scale GHG emissions.
 
 
+
+## Downscaling GHGs emissions
+
+
 ## Glossary
 
 - **Kyoto protocol** [Kyoto protocol](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=XXVII-7-a&chapter=27&clang=_en):
@@ -230,6 +249,12 @@ The [Paris Agreement](https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&
 - **Carbon footprint**
 
 - **Carbon Budget:** A carbon budget is an upper limit of total CO2 emissions associated with remaining below a specific global average - temperature. Global emissions budgets are calculated according to historical cumulative emissions from fossil, industrial processes, and land use change, but vary according to the global temperature target that is chosen, the probability of staying below that target, and the emissions of other non CO2 greenhouse gases. Emissions budgets are relevant to climate change mitigation because they indicate a finite amount of carbon dioxide that can be emitted over time, before resulting in dangerous levels of global warming.
+
+## References
+
+- [High-resolution spatial distribution and associated uncertainties of greenhouse gas emissions from the agricultural sector](https://link.springer.com/article/10.1007/s11027-017-9779-3#Tab2)
+- [Quantifying greenhouse-gas emissions from atmospheric measurements: a critical reality check for climate legislation](https://royalsocietypublishing.org/doi/10.1098/rsta.2011.0006)
+- [Satellite observations to support monitoring of greenhouse gas emissions](https://www.imperial.ac.uk/media/imperial-college/grantham-institute/public/publications/briefing-papers/Satellite-observations-to-support-monitoring-of-greenhouse-gas-emissions-Grantham-BP-16.pdf)
 
 # Data sources cartography {#section_3}
 
